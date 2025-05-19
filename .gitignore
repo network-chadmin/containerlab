@@ -1,0 +1,23 @@
+# Containerlab generated files
+clab-*/
+
+# Log files
+*.log
+
+# Containerlab directories
+.containerlab/
+
+# Temporary files
+*.bak
+*.tmp
+
+# Binary/image files (don't commit large files to git)
+*.qcow2
+*.vmdk
+*.bin
+*.tar.xz
+*.iso
+
+# Environment files that might contain credentials
+.env
+*.key

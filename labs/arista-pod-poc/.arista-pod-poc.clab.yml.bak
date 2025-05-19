@@ -1,0 +1,49 @@
+name: arista-pod-design
+topology:
+  nodes:
+    # IDF Pod (4 switches in mini leaf-spine)
+    lab-pod-leaf1:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+    lab-pod-leaf2:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+    lab-pod-spine1:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+    lab-pod-spine2:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+    
+    # Distribution Layer (2 switches)
+    lab-dsw1:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+    lab-dsw2:
+      kind: arista_ceos
+      image: ceos:4.32.0F
+  
+  links:
+    # Pod Internal Links (Leaf to Spine connections)
+    - endpoints: ["lab-pod-leaf1:eth1", "lab-pod-spine1:eth1"]
+    - endpoints: ["lab-pod-leaf1:eth2", "lab-pod-spine2:eth1"]
+    - endpoints: ["lab-pod-leaf2:eth1", "lab-pod-spine1:eth2"]
+    - endpoints: ["lab-pod-leaf2:eth2", "lab-pod-spine2:eth2"]
+    
+    # MLAG peer links between leaves
+    - endpoints: ["lab-pod-leaf1:eth3", "lab-pod-leaf2:eth3"]
+    - endpoints: ["lab-pod-leaf1:eth4", "lab-pod-leaf2:eth4"] # Second link for MLAG peer-link port-channel
+    
+    # MLAG peer links between spines
+    - endpoints: ["lab-pod-spine1:eth3", "lab-pod-spine2:eth3"]
+    - endpoints: ["lab-pod-spine1:eth4", "lab-pod-spine2:eth4"] # Second link for MLAG peer-link port-channel
+    
+    # Uplinks to Distribution (Each spine connects to both dist switches)
+    - endpoints: ["lab-pod-spine1:eth5", "lab-dsw1:eth1"]
+    - endpoints: ["lab-pod-spine1:eth6", "lab-dsw2:eth1"]
+    - endpoints: ["lab-pod-spine2:eth5", "lab-dsw1:eth2"]
+    - endpoints: ["lab-pod-spine2:eth6", "lab-dsw2:eth2"]
+    
+    # MLAG peer link between distribution switches
+    - endpoints: ["lab-dsw1:eth3", "lab-dsw2:eth3"]
+    - endpoints: ["lab-dsw1:eth4", "lab-dsw2:eth4"] # Second link for MLAG peer-link port-channel

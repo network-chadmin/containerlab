@@ -1,0 +1,31 @@
+---
+lab-dsw1:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.3
+lab-dsw2:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.6
+lab-pod-leaf1:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.2
+lab-pod-leaf2:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.5
+lab-pod-spine1:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.7
+lab-pod-spine2:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.4
