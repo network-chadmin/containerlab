@@ -23,9 +23,9 @@ lab-pod-spine1:
     username: admin
     password: admin
     platform: arista_ceos
-    hostname: 172.20.20.7
+    hostname: 172.20.20.4
 lab-pod-spine2:
     username: admin
     password: admin
     platform: arista_ceos
-    hostname: 172.20.20.4
+    hostname: 172.20.20.7

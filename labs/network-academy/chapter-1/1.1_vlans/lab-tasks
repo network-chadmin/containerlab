@@ -1,0 +1,107 @@
+# Lab 1.1: VLAN Configuration - Tasks
+
+## Completion Criteria
+To successfully complete this lab, you must:
+
+- [x] Give the switch hostname "shr-a1-asw1"
+- [x] Create VLAN 10 (ACCOUNTING) and VLAN 20 (SALES) on the switch
+- [x] Configure Ethernet1 and Ethernet2 as access ports in VLAN 10
+- [x] Configure Ethernet3 as an access port in VLAN 20
+- [x] Configure Bob with IP address 10.1.10.10/24 (VLAN 10)
+- [x] Configure Linda with IP address 10.1.10.20/24 (VLAN 10)
+- [x] Configure Alice with IP address 10.1.20.10/24 (VLAN 20)
+- [x] Assign port descriptions for all hosts
+- [x] Verify that Bob can ping Linda (same VLAN)
+- [x] Verify that neither Bob nor Linda can ping Alice (VLAN isolation)
+- [x] Save the switch configuration
+
+## Accessing the Lab Devices
+(Use `containerlab inspect` in the lab directory to view management IP addresses.)
+
+shr-a1-asw1 | `ssh admin@172.16.20.X`
+
+Bob | `docker exec -it clab-1.1_vlans-bob sh`
+
+Linda | `docker exec -it clab-1.1_vlans-linda sh`
+
+Alice | `docker exec -it clab-1.1_vlans-alice sh`
+
+## Lab Tasks
+
+### 1. Hostname Configuration
+Configure the switch with the appropriate hostname.
+
+### 2. VLAN Creation
+Create and name the required VLANs for Accounting (10) and Sales (20) departments.
+
+### 3. Port Assignment
+Assign each interface to the appropriate VLAN:
+- Ethernet1 (Bob) → VLAN 10
+- Ethernet2 (Linda) → VLAN 10
+- Ethernet3 (Alice) → VLAN 20
+
+Verify your configuration.
+
+### 4. Host Configuration
+Configure IP addresses on the hosts: `ip addr <ip-address>/<subnet-mask> dev eth1
+- Bob: 10.1.10.10/24
+- Linda: 10.1.10.20/24
+- Alice: 10.1.20.10/24
+
+### 5. Connectivity Testing
+Test communication between:
+- Bob and Linda (should succeed - same VLAN)
+- Bob and Alice (should fail - different VLANs)
+- Linda and Alice (should fail - different VLANs)
+
+### 6. Verification and Analysis
+Examine the switch's MAC address table to see which addresses are learned in which VLANs.
+
+### 7. Verification commands
+
+show vlan brief
+show mac address-table
+show interface status
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+## Final configuration
+
+hostname shr-a1-asw1
+!
+vlan 10
+ name ACCOUNTING
+!
+vlan 20 
+ name SALES
+!
+interface Ethernet1
+ description Bob-Accounting
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+interface Ethernet2
+ description Linda-Accounting
+ switchport mode access
+ switchport access vlan 10
+ no shutdown
+!
+interface Ethernet3
+ description Alice-Sales
+ switchport mode access
+ switchport access vlan 20
+ no shutdown

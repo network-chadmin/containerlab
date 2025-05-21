@@ -20,6 +20,6 @@ all:
         clab-arista-pod-design-lab-pod-leaf2:
           ansible_host: 172.20.20.5
         clab-arista-pod-design-lab-pod-spine1:
-          ansible_host: 172.20.20.7
-        clab-arista-pod-design-lab-pod-spine2:
           ansible_host: 172.20.20.4
+        clab-arista-pod-design-lab-pod-spine2:
+          ansible_host: 172.20.20.7

@@ -1,3 +1,5 @@
+isofs 61440 1 - Live 0xffffffffc0ec9000
+dummy 12288 0 - Live 0xffffffffc0ec3000
 xt_HL 12288 0 - Live 0xffffffffc0ebd000
 xt_u32 12288 0 - Live 0xffffffffc0eb7000
 nfnetlink_log 24576 0 - Live 0xffffffffc0e9c000

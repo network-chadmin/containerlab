@@ -1,0 +1,20 @@
+name: 1.1_vlans
+topology:
+  nodes:
+    shr-a1-asw1:
+      kind: arista_ceos
+      image: ceos:4.34.1F-EFT3
+    bob:
+      kind: linux
+      image: alpine:latest
+    linda:
+      kind: linux
+      image: alpine:latest
+    alice:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: ["bob:eth1", "shr-a1-asw1:eth1"]
+    - endpoints: ["linda:eth1", "shr-a1-asw1:eth2"]
+    - endpoints: ["alice:eth1", "shr-a1-asw1:eth3"]

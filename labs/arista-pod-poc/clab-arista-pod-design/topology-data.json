@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "clab",
-        "bridge": "br-217a7b8825fe",
+        "bridge": "br-32abca79df2c",
         "ipv4-subnet": "172.20.20.0/24",
         "ipv4-gw": "172.20.20.1",
         "ipv6-subnet": "3fff:172:20:20::/64",
@@ -16,7 +16,7 @@
       }
     }
   },
-  "ssh-pub-keys": [],
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKf0Hkz1M4F4F6n78nGOxnXGDRbVOXWjEcX8GWIYAkU"],
   "nodes": {
     "lab-dsw1": {
       "index": "0",
@@ -24,7 +24,7 @@
       "longname": "clab-arista-pod-design-lab-dsw1",
       "fqdn": "lab-dsw1.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw1",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw1",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
@@ -33,17 +33,17 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "3fff:172:20:20::3",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:ae:ec:ec",
+      "mac-address": "00:1c:73:3a:e2:5f",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw1",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw1",
         "clab-node-longname": "clab-arista-pod-design-lab-dsw1",
         "clab-node-name": "lab-dsw1",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -55,7 +55,7 @@
       "longname": "clab-arista-pod-design-lab-dsw2",
       "fqdn": "lab-dsw2.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw2",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw2",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
@@ -64,17 +64,17 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "3fff:172:20:20::6",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:0b:7e:2a",
+      "mac-address": "00:1c:73:bd:aa:ec",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw2",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-dsw2",
         "clab-node-longname": "clab-arista-pod-design-lab-dsw2",
         "clab-node-name": "lab-dsw2",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -86,7 +86,7 @@
       "longname": "clab-arista-pod-design-lab-pod-leaf1",
       "fqdn": "lab-pod-leaf1.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf1",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf1",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
@@ -95,17 +95,17 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "3fff:172:20:20::2",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:6a:ad:2c",
+      "mac-address": "00:1c:73:ea:08:2e",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf1",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf1",
         "clab-node-longname": "clab-arista-pod-design-lab-pod-leaf1",
         "clab-node-name": "lab-pod-leaf1",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -117,7 +117,7 @@
       "longname": "clab-arista-pod-design-lab-pod-leaf2",
       "fqdn": "lab-pod-leaf2.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf2",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf2",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
@@ -126,17 +126,17 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "3fff:172:20:20::5",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:e3:7a:ca",
+      "mac-address": "00:1c:73:38:c8:28",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf2",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-leaf2",
         "clab-node-longname": "clab-arista-pod-design-lab-pod-leaf2",
         "clab-node-name": "lab-pod-leaf2",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -148,26 +148,26 @@
       "longname": "clab-arista-pod-design-lab-pod-spine1",
       "fqdn": "lab-pod-spine1.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine1",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine1",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
       "mgmt-intf": "Management0",
-      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-address": "172.20.20.4",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:3e:ea:70",
+      "mac-address": "00:1c:73:3a:7f:01",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine1",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine1",
         "clab-node-longname": "clab-arista-pod-design-lab-pod-spine1",
         "clab-node-name": "lab-pod-spine1",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -179,26 +179,26 @@
       "longname": "clab-arista-pod-design-lab-pod-spine2",
       "fqdn": "lab-pod-spine2.arista-pod-design.io",
       "group": "",
-      "labdir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine2",
+      "labdir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine2",
       "kind": "arista_ceos",
       "image": "ceos:4.32.0F",
       "mgmt-net": "",
       "mgmt-intf": "Management0",
-      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-address": "172.20.20.7",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:de:87:16",
+      "mac-address": "00:1c:73:0d:69:c7",
       "labels": {
-        "clab-mgmt-net-bridge": "br-217a7b8825fe",
+        "clab-mgmt-net-bridge": "br-32abca79df2c",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
-        "clab-node-lab-dir": "/home/chadmin/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine2",
+        "clab-node-lab-dir": "/home/chadmin/containerlab/labs/arista-pod-poc/clab-arista-pod-design/lab-pod-spine2",
         "clab-node-longname": "clab-arista-pod-design-lab-pod-spine2",
         "clab-node-name": "lab-pod-spine2",
         "clab-node-type": "",
         "clab-owner": "chadmin",
-        "clab-topo-file": "/home/chadmin/labs/arista-pod-poc/arista-pod-poc.clab.yml",
+        "clab-topo-file": "/home/chadmin/containerlab/labs/arista-pod-poc/arista-pod-poc.clab.yml",
         "containerlab": "arista-pod-design"
       },
       "port-bindings": [
@@ -210,13 +210,13 @@
       "a": {
         "node": "lab-pod-leaf1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:40:77:57",
+        "mac": "aa:c1:ab:99:e0:0b",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:85:05:1e",
+        "mac": "aa:c1:ab:b7:4e:65",
         "peer": "a"
       }
     },
@@ -224,13 +224,13 @@
       "a": {
         "node": "lab-pod-leaf1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:63:0e:06",
+        "mac": "aa:c1:ab:55:8b:5e",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:5c:d0:a7",
+        "mac": "aa:c1:ab:b3:7b:64",
         "peer": "a"
       }
     },
@@ -238,13 +238,13 @@
       "a": {
         "node": "lab-pod-leaf2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:d2:a0:e3",
+        "mac": "aa:c1:ab:90:75:a8",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:90:09:16",
+        "mac": "aa:c1:ab:e3:66:d7",
         "peer": "a"
       }
     },
@@ -252,13 +252,13 @@
       "a": {
         "node": "lab-pod-leaf2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:1c:4a:24",
+        "mac": "aa:c1:ab:84:17:5b",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:5a:f7:5f",
+        "mac": "aa:c1:ab:6f:bd:a8",
         "peer": "a"
       }
     },
@@ -266,13 +266,13 @@
       "a": {
         "node": "lab-pod-leaf1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:ea:25:97",
+        "mac": "aa:c1:ab:a5:be:a7",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-leaf2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:18:94:32",
+        "mac": "aa:c1:ab:d4:98:d8",
         "peer": "a"
       }
     },
@@ -280,13 +280,13 @@
       "a": {
         "node": "lab-pod-leaf1",
         "interface": "eth4",
-        "mac": "aa:c1:ab:9f:df:a8",
+        "mac": "aa:c1:ab:95:aa:b6",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-leaf2",
         "interface": "eth4",
-        "mac": "aa:c1:ab:c1:b8:8a",
+        "mac": "aa:c1:ab:ad:ea:3b",
         "peer": "a"
       }
     },
@@ -294,13 +294,13 @@
       "a": {
         "node": "lab-pod-spine1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:c5:13:47",
+        "mac": "aa:c1:ab:dc:57:d5",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:76:b5:49",
+        "mac": "aa:c1:ab:19:13:71",
         "peer": "a"
       }
     },
@@ -308,13 +308,13 @@
       "a": {
         "node": "lab-pod-spine1",
         "interface": "eth4",
-        "mac": "aa:c1:ab:1b:56:8e",
+        "mac": "aa:c1:ab:fe:12:d3",
         "peer": "z"
       },
       "z": {
         "node": "lab-pod-spine2",
         "interface": "eth4",
-        "mac": "aa:c1:ab:15:b3:5e",
+        "mac": "aa:c1:ab:39:a1:17",
         "peer": "a"
       }
     },
@@ -322,13 +322,13 @@
       "a": {
         "node": "lab-pod-spine1",
         "interface": "eth5",
-        "mac": "aa:c1:ab:58:d2:70",
+        "mac": "aa:c1:ab:d8:eb:f6",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:3d:26:23",
+        "mac": "aa:c1:ab:de:78:84",
         "peer": "a"
       }
     },
@@ -336,13 +336,13 @@
       "a": {
         "node": "lab-pod-spine1",
         "interface": "eth6",
-        "mac": "aa:c1:ab:42:ee:07",
+        "mac": "aa:c1:ab:98:d3:d2",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:dc:02:fc",
+        "mac": "aa:c1:ab:dc:c8:a7",
         "peer": "a"
       }
     },
@@ -350,13 +350,13 @@
       "a": {
         "node": "lab-pod-spine2",
         "interface": "eth5",
-        "mac": "aa:c1:ab:5e:76:21",
+        "mac": "aa:c1:ab:10:f7:0c",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw1",
         "interface": "eth2",
-        "mac": "aa:c1:ab:44:04:b1",
+        "mac": "aa:c1:ab:f4:3e:64",
         "peer": "a"
       }
     },
@@ -364,13 +364,13 @@
       "a": {
         "node": "lab-pod-spine2",
         "interface": "eth6",
-        "mac": "aa:c1:ab:c9:cb:a5",
+        "mac": "aa:c1:ab:a6:dd:50",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw2",
         "interface": "eth2",
-        "mac": "aa:c1:ab:dc:70:c4",
+        "mac": "aa:c1:ab:d9:fb:44",
         "peer": "a"
       }
     },
@@ -378,13 +378,13 @@
       "a": {
         "node": "lab-dsw1",
         "interface": "eth3",
-        "mac": "aa:c1:ab:f9:c5:f5",
+        "mac": "aa:c1:ab:74:93:6e",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw2",
         "interface": "eth3",
-        "mac": "aa:c1:ab:63:96:16",
+        "mac": "aa:c1:ab:b5:37:23",
         "peer": "a"
       }
     },
@@ -392,13 +392,13 @@
       "a": {
         "node": "lab-dsw1",
         "interface": "eth4",
-        "mac": "aa:c1:ab:9f:3e:e3",
+        "mac": "aa:c1:ab:3a:58:80",
         "peer": "z"
       },
       "z": {
         "node": "lab-dsw2",
         "interface": "eth4",
-        "mac": "aa:c1:ab:17:15:fd",
+        "mac": "aa:c1:ab:65:22:6f",
         "peer": "a"
       }
     }
