@@ -4,6 +4,8 @@ topology:
     shr-a1-asw1:
       kind: arista_ceos
       image: ceos:4.34.1F-EFT3
+      management:
+        ipv4-address: 172.20.20.2/24
     bob:
       kind: linux
       image: alpine:latest
