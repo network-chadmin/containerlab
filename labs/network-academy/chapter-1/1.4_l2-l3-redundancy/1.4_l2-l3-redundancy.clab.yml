@@ -52,5 +52,5 @@ topology:
     - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
     - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:eth0/1"]
-    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r2:eth0/1"]
+    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-r2:eth1"]

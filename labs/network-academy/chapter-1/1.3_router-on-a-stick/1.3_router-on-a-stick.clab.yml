@@ -47,4 +47,4 @@ topology:
     # Switch to Switch Links
     - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:eth4", "sea-mdf-r1:eth0/1"]
+    - endpoints: ["sea-a1-asw1:eth4", "sea-mdf-r1:eth1"]
