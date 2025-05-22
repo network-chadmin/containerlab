@@ -1,11 +1,15 @@
 name: 1.1_vlans
+!
+mgmt:
+  network: static
+  ipv4-subnet: 172.16.20.0/24 
+!
 topology:
   nodes:
     shr-a1-asw1:
       kind: arista_ceos
       image: ceos:4.34.1F-EFT3
-      management:
-        ipv4-address: 172.20.20.2/24
+      mgmt-ipv4: 172.20.20.2/24
     bob:
       kind: linux
       image: alpine:latest
@@ -15,7 +19,7 @@ topology:
     alice:
       kind: linux
       image: alpine:latest
-
+!
   links:
     - endpoints: ["bob:eth1", "shr-a1-asw1:eth1"]
     - endpoints: ["linda:eth1", "shr-a1-asw1:eth2"]
