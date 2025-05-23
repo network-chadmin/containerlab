@@ -1,0 +1,64 @@
+name: 1.3_l2-l3-redundancy
+
+mgmt:
+  network: static
+  ipv4-subnet: 172.16.20.0/24
+
+topology:
+  nodes:
+    # Switches
+    sea-a1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.20.19
+      image: ceos:4.34.1F-EFT3
+    sea-b1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.20.20
+      image: ceos:4.34.1F-EFT3
+    # Routers
+    sea-mdf-r1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.20.21
+      image: vrnetlab/cisco_iol:17.15.01
+    sea-mdf-r2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.20.22
+      image: vrnetlab/cisco_iol:17.15.01
+    isp-100:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.20.22
+      image: vrnetlab/cisco_iol:17.15.01
+    # Hosts
+    bob:
+      kind: linux
+      mgmt-ipv4: 172.16.20.23
+      image: alpine:latest
+    alice:
+      kind: linux
+      mgmt-ipv4: 172.16.20.24
+      image: alpine:latest
+    steve:
+      kind: linux
+      mgmt-ipv4: 172.16.20.25
+      image: alpine:latest
+    linda:
+      kind: linux
+      mgmt-ipv4: 172.16.20.26
+      image: alpine:latest
+    google:
+      kind: linux
+      mgmt-ipv4: 172.16.20.26
+      image: alpine:latest 
+
+  links:
+    # Host to Switch Links
+    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
+    # Switch to Switch Links
+    - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
+    - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
+    # Switch to Router Links
+    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-r2:eth1"]
