@@ -1,4 +1,4 @@
-name: 1.5_nat-internet
+name: 1.7_pat-dynamic-routing
 
 mgmt:
   network: static
@@ -6,49 +6,59 @@ mgmt:
 
 topology:
   nodes:
-    # Switches
+    # Access Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.27
+      mgmt-ipv4: 172.16.20.48
       image: ceos:4.34.1F-EFT3
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.28
+      mgmt-ipv4: 172.16.20.49
       image: ceos:4.34.1F-EFT3
+    # Distribution Switches
+    sea-mdf-dsw1:
+     kind: arista_ceos
+     mgmt-ipv4: 172.16.20.50
+     image: ceos:4.34.1F-EFT3
+    sea-mdf-dsw1:
+     kind: arista_ceos
+     mgmt-ipv4: 172.16.20.51
+     image: ceos:4.34.1F-EFT3
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.29
+      mgmt-ipv4: 172.16.20.52
       image: vrnetlab/cisco_iol:17.15.01
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.30
+      mgmt-ipv4: 172.16.20.53
       image: vrnetlab/cisco_iol:17.15.01
     isp-100:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.31
+      mgmt-ipv4: 172.16.20.54
       image: vrnetlab/cisco_iol:17.15.01
     # Hosts
     google:
       kind: linux
-      mgmt-ipv4: 172.16.20.32
+      mgmt-ipv4: 172.16.20.55
       image: alpine:latest 
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.20.33
+      mgmt-ipv4: 172.16.20.56
       image: alpine:latest
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.20.34
+      mgmt-ipv4: 172.16.20.57
       image: alpine:latest
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.20.35
+      mgmt-ipv4: 172.16.20.58
       image: alpine:latest
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.20.36
+      mgmt-ipv4: 172.16.20.59
       image: alpine:latest
+
 
   links:
     # Host to Switch Links
@@ -59,11 +69,17 @@ topology:
     # Switch to Switch Links
     - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
     - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
+    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-dsw1:eth1"]
+    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-dsw2:eth1"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-r2:eth1"]
+    - endpoints: ["sea-mdf-dsw1:eth2", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r2:eth2"]
+    - endpoints: ["sea-mdf-dsw2:eth2", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r2:eth2"]
     # Router to Router Links
-    - endpoints: [sea-mdf-r1:eth2, "isp-100:eth1"]
-    - endpoints: [sea-mdf-r2:eth2, "isp-100:eth2"]
-    # Internet to Host Links:
+    - endpoints: ["sea-mdf-r1:eth3", "isp-100:eth1"]
+    - endpoints: ["sea-mdf-r2:eth3", "isp-100:eth2"]
+    # Internet to Host Links
     - endpoints: [google:eth1, "isp-100:eth3"]
