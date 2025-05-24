@@ -9,28 +9,28 @@ topology:
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.6
+      mgmt-ipv4: 172.16.25.6
       image: ceos:4.34.1F-EFT3
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.7
+      mgmt-ipv4: 172.16.25.7
       image: ceos:4.34.1F-EFT3
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.20.8
+      mgmt-ipv4: 172.16.25.8
       image: alpine:latest
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.20.9
+      mgmt-ipv4: 172.16.25.9
       image: alpine:latest
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.20.10
+      mgmt-ipv4: 172.16.25.10
       image: alpine:latest
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.20.11
+      mgmt-ipv4: 172.16.25.11
       image: alpine:latest
 
   links:

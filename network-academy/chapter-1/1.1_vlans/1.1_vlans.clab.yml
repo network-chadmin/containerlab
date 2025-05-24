@@ -2,27 +2,27 @@ name: 1.1_vlans
 
 mgmt:
   network: static
-  ipv4-subnet: 172.16.20.0/24 
+  ipv4-subnet: 172.16.25.0/24 
 
 topology:
   nodes:
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.2
+      mgmt-ipv4: 172.16.25.2
       image: ceos:4.34.1F-EFT3
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.20.3
+      mgmt-ipv4: 172.16.25.3
       image: alpine:latest
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.20.4
+      mgmt-ipv4: 172.16.25.4
       image: alpine:latest
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.20.5
+      mgmt-ipv4: 172.16.25.5
       image: alpine:latest
 
   links:

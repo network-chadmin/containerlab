@@ -1,0 +1,127 @@
+name: 1.9_multiareaospf-gre-bgp
+
+mgmt:
+  network: static
+  ipv4-subnet: 172.16.25.0/24
+
+topology:
+  nodes:
+    # Access Switches
+    sea-a1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.25.74
+      image: ceos:4.34.1F-EFT3
+    sea-b1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.25.75
+      image: ceos:4.34.1F-EFT3
+    mke-a1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.25.81
+      image: ceos:4.34.1F-EFT3
+    msp-a1-asw1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.16.25.84
+      image: ceos:4.34.1F-EFT3
+    # Distribution Switches
+    sea-mdf-dsw1:
+     kind: arista_ceos
+     mgmt-ipv4: 172.16.25.76
+     image: ceos:4.34.1F-EFT3
+    sea-mdf-dsw1:
+     kind: arista_ceos
+     mgmt-ipv4: 172.16.25.77
+     image: ceos:4.34.1F-EFT3
+    # Routers
+    sea-mdf-r1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.78
+      image: vrnetlab/cisco_iol:17.15.01
+    sea-mdf-r2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.79
+      image: vrnetlab/cisco_iol:17.15.01
+    mke-a1-r1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.82
+      image: vrnetlab/cisco_iol:17.15.01
+    msp-a1-r1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.83
+      image: vrnetlab/cisco_iol:17.15.01
+    isp-100:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.86
+      image: vrnetlab/cisco_iol:17.15.01
+    # Hosts
+    google:
+      kind: linux
+      mgmt-ipv4: 172.16.25.87
+      image: alpine:latest 
+    jim:
+      kind: linux
+      mgmt-ipv4: 172.16.25.80
+      image: alpine:latest
+    rylie:
+      kind: linux
+      mgmt-ipv4: 172.16.25.85
+      image: alpine:latest
+    bob:
+      kind: linux
+      mgmt-ipv4: 172.16.25.88
+      image: alpine:latest
+    gerald:
+      kind: linux
+      mgmt-ipv4: 172.16.25.89
+      image: alpine:latest
+    alice:
+      kind: linux
+      mgmt-ipv4: 172.16.25.90
+      image: alpine:latest
+    steve:
+      kind: linux
+      mgmt-ipv4: 172.16.25.91
+      image: alpine:latest
+    sandra:
+      kind: linux
+      mgmt-ipv4: 172.16.25.92
+      image: alpine:latest
+    linda:
+      kind: linux
+      mgmt-ipv4: 172.16.25.93
+      image: alpine:latest
+
+
+  links:
+    # Host to Switch Links
+    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
+    - endpoints: ["gerald:eth1", "sea-a1-asw1:eth3"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
+    - endpoints: ["sandra:eth1", "sea-a1-asw1:eth3"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
+    - endpoints: ["jim:eth1", "mke-a1-asw1:eth1"]
+    - endpoints: ["rylie:eth1", "msp-a1-asw1:eth1"]
+    # Switch to Switch Links
+    - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
+    - endpoints: ["sea-a1-asw1:eth5", "sea-b1-asw1:eth5"]
+    - endpoints: ["sea-a1-asw1:eth6", "sea-mdf-dsw1:eth1"]
+    - endpoints: ["sea-a1-asw1:eth7", "sea-mdf-dsw2:eth2"]
+    - endpoints: ["sea-b1-asw1:eth6", "sea-mdf-dsw2:eth1"]
+    - endpoints: ["sea-b1-asw1:eth7", "sea-mdf-dsw2:eth2"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    # Switch to Router Links
+    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:eth2"]
+    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw2:eth6", "sea-mdf-r2:eth2"]
+    - endpoints: ["mke-a1-asw1:eth2", "mke-a1-r1:eth1"]
+    - endpoints: ["msp-a1-asw1:eth2", "mke-a1-r1:eth1"]
+    # Router to Router Links
+    - endpoints: ["sea-mdf-r1:eth3", "isp-100:eth1"]
+    - endpoints: ["sea-mdf-r2:eth3", "isp-100:eth2"]
+    - endpoints: ["mke-a1-r1:eth2", "isp-100:eth3"]
+    - endpoints: ["msp-a1-r2:eth2", "isp-100:eth4"]
+    # Internet to Host Links
+    - endpoints: [google:eth1, "isp-100:eth5"]

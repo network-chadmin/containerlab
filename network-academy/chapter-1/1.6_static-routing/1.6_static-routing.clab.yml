@@ -2,57 +2,57 @@ name: 1.6_static-routing
 
 mgmt:
   network: static
-  ipv4-subnet: 172.16.20.0/24
+  ipv4-subnet: 172.16.25.0/24
 
 topology:
   nodes:
     # Access Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.37
+      mgmt-ipv4: 172.16.25.37
       image: ceos:4.34.1F-EFT3
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.38
+      mgmt-ipv4: 172.16.25.38
       image: ceos:4.34.1F-EFT3
     # Distribution Switches
     sea-mdf-dsw1:
      kind: arista_ceos
-     mgmt-ipv4: 172.16.20.39
+     mgmt-ipv4: 172.16.25.39
      image: ceos:4.34.1F-EFT3
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.40
+      mgmt-ipv4: 172.16.25.40
       image: vrnetlab/cisco_iol:17.15.01
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.41
+      mgmt-ipv4: 172.16.25.41
       image: vrnetlab/cisco_iol:17.15.01
     isp-100:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.42
+      mgmt-ipv4: 172.16.25.42
       image: vrnetlab/cisco_iol:17.15.01
     # Hosts
     google:
       kind: linux
-      mgmt-ipv4: 172.16.20.43
+      mgmt-ipv4: 172.16.25.43
       image: alpine:latest 
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.20.44
+      mgmt-ipv4: 172.16.25.44
       image: alpine:latest
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.20.45
+      mgmt-ipv4: 172.16.25.45
       image: alpine:latest
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.20.46
+      mgmt-ipv4: 172.16.25.46
       image: alpine:latest
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.20.47
+      mgmt-ipv4: 172.16.25.47
       image: alpine:latest
 
 

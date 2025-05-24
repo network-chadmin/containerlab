@@ -2,44 +2,44 @@ name: 1.3_l2-l3-redundancy
 
 mgmt:
   network: static
-  ipv4-subnet: 172.16.20.0/24
+  ipv4-subnet: 172.16.25.0/24
 
 topology:
   nodes:
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.19
+      mgmt-ipv4: 172.16.25.19
       image: ceos:4.34.1F-EFT3
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.16.20.20
+      mgmt-ipv4: 172.16.25.20
       image: ceos:4.34.1F-EFT3
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.21
+      mgmt-ipv4: 172.16.25.21
       image: vrnetlab/cisco_iol:17.15.01
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.20.22
+      mgmt-ipv4: 172.16.25.22
       image: vrnetlab/cisco_iol:17.15.01
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.20.23
+      mgmt-ipv4: 172.16.25.23
       image: alpine:latest
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.20.24
+      mgmt-ipv4: 172.16.25.24
       image: alpine:latest
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.20.25
+      mgmt-ipv4: 172.16.25.25
       image: alpine:latest
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.20.26
+      mgmt-ipv4: 172.16.25.26
       image: alpine:latest
 
   links:
