@@ -15,15 +15,15 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.3
-      image: alpine:latest
+      image: network-host:latest
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.4
-      image: alpine:latest
+      image: network-host:latest
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.5
-      image: alpine:latest
+      image: network-host:latest
 
   links:
     - endpoints: ["bob:eth1", "shr-a1-asw1:eth1"]

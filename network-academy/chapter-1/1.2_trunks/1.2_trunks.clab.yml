@@ -19,19 +19,19 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.8
-      image: alpine:latest
+      image: network-host:latest
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.9
-      image: alpine:latest
+      image: network-host:latest
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.10
-      image: alpine:latest
+      image: network-host:latest
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.11
-      image: alpine:latest
+      image: network-host:latest
 
   links:
     # Host to Switch Links

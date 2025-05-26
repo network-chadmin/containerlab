@@ -57,39 +57,39 @@ topology:
     google:
       kind: linux
       mgmt-ipv4: 172.16.25.87
-      image: alpine:latest 
+      image: network-host:latest 
     jim:
       kind: linux
       mgmt-ipv4: 172.16.25.80
-      image: alpine:latest
+      image: network-host:latest
     rylie:
       kind: linux
       mgmt-ipv4: 172.16.25.85
-      image: alpine:latest
+      image: network-host:latest
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.88
-      image: alpine:latest
+      image: network-host:latest
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.89
-      image: alpine:latest
+      image: network-host:latest
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.90
-      image: alpine:latest
+      image: network-host:latest
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.91
-      image: alpine:latest
+      image: network-host:latest
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.92
-      image: alpine:latest
+      image: network-host:latest
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.93
-      image: alpine:latest
+      image: network-host:latest
 
 
   links:
