@@ -26,6 +26,6 @@ topology:
       image: network-host:latest
 
   links:
-    - endpoints: ["bob:eth1", "shr-a1-asw1:eth1"]
-    - endpoints: ["linda:eth1", "shr-a1-asw1:eth2"]
-    - endpoints: ["alice:eth1", "shr-a1-asw1:eth3"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
+    - endpoints: ["linda:eth1", "sea-a1-asw1:eth3"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
