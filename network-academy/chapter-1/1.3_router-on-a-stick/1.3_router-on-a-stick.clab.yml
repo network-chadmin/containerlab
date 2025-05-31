@@ -11,10 +11,18 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.16.25.12
       image: ceos:4.34.1F-EFT3
+      startup-config: |
+        configure
+        no ip route 0.0.0.0/0 172.20.25.1
+
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.16.25.13
       image: ceos:4.34.1F-EFT3
+      startup-config: |
+        configure
+        no ip route 0.0.0.0/0 172.20.25.1
+      
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
@@ -25,18 +33,29 @@ topology:
       kind: linux
       mgmt-ipv4: 172.16.25.15
       image: network-host:latest
+      startup-config: |
+        ip route del default
+
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.16
       image: network-host:latest
+      startup-config: |
+        ip route del default
+
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.17
       image: network-host:latest
+      startup-config: |
+        ip route del default
+
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.18
       image: network-host:latest
+      startup-config: |
+        ip route del default
 
   links:
     # Host to Switch Links
