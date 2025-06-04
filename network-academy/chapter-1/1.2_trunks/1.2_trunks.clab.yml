@@ -1,4 +1,4 @@
-name: 1.2_trunks
+name: 2_trunks
 
 mgmt:
   network: static
@@ -8,36 +8,58 @@ topology:
   nodes:
     # Switches
     sea-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.6
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     sea-b1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.7
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Hosts
     bob:
       kind: linux
       mgmt-ipv4: 172.20.25.8
       image: network-host:latest
+      startup-config: |
+        ip route del default
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.9
       image: network-host:latest
+      startup-config: |
+        ip route del default
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.10
       image: network-host:latest
+      startup-config: |
+        ip route del default
     steve:
       kind: linux
       mgmt-ipv4: 172.20.25.11
       image: network-host:latest
+      startup-config: |
+        ip route del default
 
   links:
     # Host to Switch Links
-    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
-    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
-    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:e0/1"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:e0/2"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
+    - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:e0/3"]

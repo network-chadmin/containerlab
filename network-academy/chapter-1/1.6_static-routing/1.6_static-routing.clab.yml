@@ -1,4 +1,4 @@
-name: 1.6_static-routing
+name: 6_static-routing
 
 mgmt:
   network: static
@@ -8,70 +8,118 @@ topology:
   nodes:
     # Access Switches
     sea-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.37
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     sea-b1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.38
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Distribution Switches
     sea-mdf-dsw1:
-     kind: arista_ceos
+     kind: cisco_iol
      mgmt-ipv4: 172.16.25.39
-     image: ceos:4.34.1F-EFT3
+     image: vrnetlab/cisco_iol:L2-17.15.01
+     type: L2
+     startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.40
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     sea-mdf-r2:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.41
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     isp-100:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.42
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Hosts
     google:
       kind: linux
       mgmt-ipv4: 172.16.25.43
-      image: network-host:latest 
+      image: network-host:latest
+      startup-config: |
+        ip route del default
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.44
       image: network-host:latest
+      startup-config: |
+        ip route del default
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.45
       image: network-host:latest
+      startup-config: |
+        ip route del default
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.46
       image: network-host:latest
+      startup-config: |
+        ip route del default
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.47
       image: network-host:latest
-
+      startup-config: |
+        ip route del default
 
   links:
     # Host to Switch Links
-    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
-    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
-    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:e0/1"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:e0/2"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
-    - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
-    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-dsw1:eth1"]
-    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-dsw1:eth2"]
+    - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:e0/3"]
+    - endpoints: ["sea-a1-asw1:e1/0", "sea-b1-asw1:e1/0"]
+    - endpoints: ["sea-a1-asw1:e1/1", "sea-mdf-dsw1:e0/1"]
+    - endpoints: ["sea-b1-asw1:e1/1", "sea-mdf-dsw1:e0/2"]
     # Switch to Router Links
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-mdf-dsw1:eth4", "sea-mdf-r2:eth1"]
+    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:e1/0", "sea-mdf-r2:e0/1"]
     # Router to Router Links
-    - endpoints: ["sea-mdf-r1:eth2", "isp-100:eth1"]
-    - endpoints: ["sea-mdf-r2:eth2", "isp-100:eth2"]
+    - endpoints: ["sea-mdf-r1:e0/2", "isp-100:e0/1"]
+    - endpoints: ["sea-mdf-r2:e0/2", "isp-100:e0/2"]
     # Internet to Host Links
-    - endpoints: [google:eth1, "isp-100:eth3"]
+    - endpoints: [google:eth1, "isp-100:e0/3"]

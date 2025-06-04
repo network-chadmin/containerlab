@@ -1,4 +1,4 @@
-name: 1.1_vlans
+name: 1_vlans
 
 mgmt:
   network: static
@@ -8,9 +8,16 @@ topology:
   nodes:
     # Switches
     sea-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.2
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Hosts
     bob:
       kind: linux
@@ -26,6 +33,6 @@ topology:
       image: network-host:latest
 
   links:
-    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
-    - endpoints: ["linda:eth1", "sea-a1-asw1:eth3"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
+    - endpoints: ["linda:eth1", "sea-a1-asw1:e0/3"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]

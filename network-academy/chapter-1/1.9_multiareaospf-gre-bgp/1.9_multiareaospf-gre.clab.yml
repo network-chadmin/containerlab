@@ -1,4 +1,4 @@
-name: 1.9_multiareaospf-gre-bgp
+name: 9_multiareaospf-gre-bgp
 
 mgmt:
   network: static
@@ -8,120 +8,209 @@ topology:
   nodes:
     # Access Switches
     sea-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.74
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     sea-b1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.75
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     mke-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.81
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     msp-a1-asw1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.16.25.84
-      image: ceos:4.34.1F-EFT3
+      image: vrnetlab/cisco_iol:L2-17.15.01
+      type: L2
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Distribution Switches
     sea-mdf-dsw1:
-     kind: arista_ceos
+     kind: cisco_iol
      mgmt-ipv4: 172.16.25.76
-     image: ceos:4.34.1F-EFT3
-    sea-mdf-dsw1:
-     kind: arista_ceos
+     image: vrnetlab/cisco_iol:L2-17.15.01
+     type: L2
+     startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
+    sea-mdf-dsw2:
+     kind: cisco_iol
      mgmt-ipv4: 172.16.25.77
-     image: ceos:4.34.1F-EFT3
+     image: vrnetlab/cisco_iol:L2-17.15.01
+     type: L2
+     startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.78
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     sea-mdf-r2:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.79
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     mke-a1-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.82
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     msp-a1-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.83
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     isp-100:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.86
       image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Hosts
     google:
       kind: linux
       mgmt-ipv4: 172.16.25.87
-      image: network-host:latest 
+      image: network-host:latest
+      startup-config: |
+        ip route del default
     jim:
       kind: linux
       mgmt-ipv4: 172.16.25.80
       image: network-host:latest
+      startup-config: |
+        ip route del default
     rylie:
       kind: linux
       mgmt-ipv4: 172.16.25.85
       image: network-host:latest
+      startup-config: |
+        ip route del default
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.88
       image: network-host:latest
+      startup-config: |
+        ip route del default
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.89
       image: network-host:latest
+      startup-config: |
+        ip route del default
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.90
       image: network-host:latest
+      startup-config: |
+        ip route del default
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.91
       image: network-host:latest
+      startup-config: |
+        ip route del default
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.92
       image: network-host:latest
+      startup-config: |
+        ip route del default
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.93
       image: network-host:latest
-
+      startup-config: |
+        ip route del default
 
   links:
     # Host to Switch Links
-    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
-    - endpoints: ["gerald:eth1", "sea-a1-asw1:eth3"]
-    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
-    - endpoints: ["sandra:eth1", "sea-a1-asw1:eth3"]
-    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
-    - endpoints: ["jim:eth1", "mke-a1-asw1:eth1"]
-    - endpoints: ["rylie:eth1", "msp-a1-asw1:eth1"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]
+    - endpoints: ["gerald:eth1", "sea-a1-asw1:e0/3"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:e0/1"]
+    - endpoints: ["sandra:eth1", "sea-a1-asw1:e0/3"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:e0/2"]
+    - endpoints: ["jim:eth1", "mke-a1-asw1:e0/1"]
+    - endpoints: ["rylie:eth1", "msp-a1-asw1:e0/1"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
-    - endpoints: ["sea-a1-asw1:eth5", "sea-b1-asw1:eth5"]
-    - endpoints: ["sea-a1-asw1:eth6", "sea-mdf-dsw1:eth1"]
-    - endpoints: ["sea-a1-asw1:eth7", "sea-mdf-dsw2:eth2"]
-    - endpoints: ["sea-b1-asw1:eth6", "sea-mdf-dsw2:eth1"]
-    - endpoints: ["sea-b1-asw1:eth7", "sea-mdf-dsw2:eth2"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-a1-asw1:e1/0", "sea-b1-asw1:e1/0"]
+    - endpoints: ["sea-a1-asw1:e1/1", "sea-b1-asw1:e1/1"]
+    - endpoints: ["sea-a1-asw1:e1/2", "sea-mdf-dsw1:e0/1"]
+    - endpoints: ["sea-a1-asw1:e1/3", "sea-mdf-dsw2:e0/2"]
+    - endpoints: ["sea-b1-asw1:e1/2", "sea-mdf-dsw2:e0/1"]
+    - endpoints: ["sea-b1-asw1:e1/3", "sea-mdf-dsw2:e0/2"]
+    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-dsw2:e1/0"]
+    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-dsw2:e1/0"]
     # Switch to Router Links
-    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:eth2"]
-    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-mdf-dsw2:eth6", "sea-mdf-r2:eth2"]
-    - endpoints: ["mke-a1-asw1:eth2", "mke-a1-r1:eth1"]
-    - endpoints: ["msp-a1-asw1:eth2", "mke-a1-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw1:e1/1", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:e1/2", "sea-mdf-r2:e0/2"]
+    - endpoints: ["sea-mdf-dsw2:e1/1", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw2:e1/2", "sea-mdf-r2:e0/2"]
+    - endpoints: ["mke-a1-asw1:e0/2", "mke-a1-r1:e0/1"]
+    - endpoints: ["msp-a1-asw1:e0/2", "mke-a1-r1:e0/1"]
     # Router to Router Links
-    - endpoints: ["sea-mdf-r1:eth3", "isp-100:eth1"]
-    - endpoints: ["sea-mdf-r2:eth3", "isp-100:eth2"]
-    - endpoints: ["mke-a1-r1:eth2", "isp-100:eth3"]
-    - endpoints: ["msp-a1-r2:eth2", "isp-100:eth4"]
+    - endpoints: ["sea-mdf-r1:e0/3", "isp-100:e0/1"]
+    - endpoints: ["sea-mdf-r2:e0/3", "isp-100:e0/2"]
+    - endpoints: ["mke-a1-r1:e0/2", "isp-100:e0/3"]
+    - endpoints: ["msp-a1-r2:e0/2", "isp-100:e1/0"]
     # Internet to Host Links
-    - endpoints: [google:eth1, "isp-100:eth5"]
+    - endpoints: [google:eth1, "isp-100:e1/1"]
