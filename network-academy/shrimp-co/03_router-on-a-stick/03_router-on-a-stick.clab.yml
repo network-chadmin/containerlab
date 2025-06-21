@@ -1,7 +1,7 @@
 name: 3_router-on-a-stick
 
 mgmt:
-  network: static
+  network: custom_mgmt
   ipv4-subnet: 172.16.25.0/24
 
 topology:
@@ -10,7 +10,7 @@ topology:
     sea-a1-asw1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.12
-      image: vrnetlab/cisco_iol:L2-17.15.01
+      image: vrnetlab/cisco_iol:L2-17-15-01
       type: L2
       startup-config: |
         configure terminal

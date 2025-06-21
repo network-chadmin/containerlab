@@ -1,7 +1,7 @@
 name: 7_pat-dynamic-routing
 
 mgmt:
-  network: static
+  network: custom_mgmt
   ipv4-subnet: 172.16.25.0/24
 
 topology:

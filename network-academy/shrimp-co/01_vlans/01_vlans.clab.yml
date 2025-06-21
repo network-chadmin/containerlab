@@ -1,7 +1,7 @@
-name: 1_vlans
+name: 01_vlans
 
 mgmt:
-  network: static
+  network: custom_mgmt
   ipv4-subnet: 172.20.25.0/24 
 
 topology:
