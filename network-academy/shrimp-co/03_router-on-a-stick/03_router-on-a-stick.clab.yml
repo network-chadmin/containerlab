@@ -2,7 +2,7 @@ name: 3_router-on-a-stick
 
 mgmt:
   network: custom_mgmt
-  ipv4-subnet: 172.16.25.0/24
+  ipv4-subnet: 172.20.25.0/24
 
 topology:
   nodes:
@@ -10,7 +10,7 @@ topology:
     # Switches
     sea-a1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.12
+      mgmt-ipv4: 172.20.25.12
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -22,7 +22,7 @@ topology:
 
     sea-b1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.13
+      mgmt-ipv4: 172.20.25.13
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -34,7 +34,7 @@ topology:
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.14
+      mgmt-ipv4: 172.20.25.14
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -45,7 +45,7 @@ topology:
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.25.15
+      mgmt-ipv4: 172.20.25.15
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -54,7 +54,7 @@ topology:
       
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.25.16
+      mgmt-ipv4: 172.20.25.20
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -63,7 +63,7 @@ topology:
       
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.25.17
+      mgmt-ipv4: 172.20.25.17
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -72,7 +72,7 @@ topology:
       
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.25.18
+      mgmt-ipv4: 172.20.25.18
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
