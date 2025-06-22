@@ -54,7 +54,7 @@ topology:
       
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.20
+      mgmt-ipv4: 172.20.25.16
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
