@@ -115,7 +115,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     alice:
       kind: linux

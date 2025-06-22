@@ -135,7 +135,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     jim:
       kind: linux
@@ -146,7 +146,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     rylie:
       kind: linux
@@ -157,7 +157,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     bob:
       kind: linux
@@ -168,7 +168,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     gerald:
       kind: linux
@@ -179,7 +179,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     alice:
       kind: linux
@@ -190,7 +190,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     steve:
       kind: linux
@@ -201,7 +201,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     sandra:
       kind: linux
@@ -212,7 +212,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
     linda:
       kind: linux
@@ -223,7 +223,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        /usr/sbin/sshd ssh start
+        /usr/sbin/service ssh start
 
 
   links:
