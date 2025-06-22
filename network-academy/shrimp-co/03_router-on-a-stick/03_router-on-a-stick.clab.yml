@@ -6,6 +6,7 @@ mgmt:
 
 topology:
   nodes:
+  
     # Switches
     sea-a1-asw1:
       kind: cisco_iol
@@ -18,6 +19,7 @@ topology:
         !
         int e0/0
         no cdp enable
+
     sea-b1-asw1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.13
@@ -28,6 +30,7 @@ topology:
         no ip route 0.0.0.0/0 172.20.25.1
         int e0/0
         no cdp enable
+
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
@@ -44,58 +47,38 @@ topology:
       kind: linux
       mgmt-ipv4: 172.16.25.15
       image: network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/sshd ssh start
-
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
+      
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.16
       image: network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/sshd ssh start
-
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
+      
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.17
       image: network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/sshd ssh start
-
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
+      
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.18
       image: network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/sshd ssh start
-
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
+      
   links:
     # Host to Switch Links
     - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]

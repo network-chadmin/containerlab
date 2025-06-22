@@ -6,6 +6,7 @@ mgmt:
 
 topology:
   nodes:
+
     # Switches
     sea-a1-asw1:
       kind: cisco_iol
@@ -18,6 +19,7 @@ topology:
         !
         int e0/0
         no cdp enable
+
     sea-b1-asw1:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.7
@@ -29,6 +31,7 @@ topology:
         !
         int e0/0
         no cdp enable
+        
     # Hosts
     bob:
       kind: linux

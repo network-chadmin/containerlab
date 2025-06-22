@@ -1,15 +1,15 @@
-name: 3_l2-l3-redundancy
+name: 6_static-routing
 
 mgmt:
   network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  ipv4-subnet: 172.16.25.0/24
 
 topology:
   nodes:
-    # Switches
+    # Access Switches
     sea-a1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.19
+      mgmt-ipv4: 172.16.25.37
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -18,10 +18,9 @@ topology:
         !
         int e0/0
         no cdp enable
-
     sea-b1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.20
+      mgmt-ipv4: 172.16.25.38
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -30,11 +29,22 @@ topology:
         !
         int e0/0
         no cdp enable
-
+    # Distribution Switches
+    sea-mdf-dsw1:
+     kind: cisco_iol
+     mgmt-ipv4: 172.16.25.39
+     image: vrnetlab/cisco_iol:L2-17.15.01
+     type: L2
+     startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.21
+      mgmt-ipv4: 172.16.25.40
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -42,10 +52,9 @@ topology:
         !
         int e0/0
         no cdp enable
-
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.22
+      mgmt-ipv4: 172.16.25.41
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -53,11 +62,29 @@ topology:
         !
         int e0/0
         no cdp enable
-      
+    isp-100:
+      kind: cisco_iol
+      mgmt-ipv4: 172.16.25.42
+      image: vrnetlab/cisco_iol:17.15.01
+      startup-config: |
+        configure terminal
+        no ip route 0.0.0.0/0 172.20.25.1
+        !
+        int e0/0
+        no cdp enable
     # Hosts
+    google:
+      kind: linux
+      mgmt-ipv4: 172.16.25.43
+      image: networkchadmin/network-host:latest
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
+
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.23
+      mgmt-ipv4: 172.16.25.44
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -66,7 +93,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.24
+      mgmt-ipv4: 172.16.25.45
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -75,7 +102,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.25
+      mgmt-ipv4: 172.16.25.46
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -84,7 +111,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.26
+      mgmt-ipv4: 172.16.25.47
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -100,6 +127,13 @@ topology:
     # Switch to Switch Links
     - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:e0/3"]
     - endpoints: ["sea-a1-asw1:e1/0", "sea-b1-asw1:e1/0"]
+    - endpoints: ["sea-a1-asw1:e1/1", "sea-mdf-dsw1:e0/1"]
+    - endpoints: ["sea-b1-asw1:e1/1", "sea-mdf-dsw1:e0/2"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:e1/1", "sea-mdf-r1:e0/1"]
-    - endpoints: ["sea-b1-asw1:e1/1", "sea-mdf-r2:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:e1/0", "sea-mdf-r2:e0/1"]
+    # Router to Router Links
+    - endpoints: ["sea-mdf-r1:e0/2", "isp-100:e0/1"]
+    - endpoints: ["sea-mdf-r2:e0/2", "isp-100:e0/2"]
+    # Internet to Host Links
+    - endpoints: [google:eth1, "isp-100:e0/3"]
