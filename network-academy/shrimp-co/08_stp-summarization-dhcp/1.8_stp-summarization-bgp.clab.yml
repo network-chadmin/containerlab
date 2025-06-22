@@ -93,8 +93,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.68
@@ -104,8 +104,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.69
@@ -115,8 +115,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.70
@@ -126,8 +126,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.71
@@ -137,8 +137,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.72
@@ -148,8 +148,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.73
@@ -159,8 +159,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
 
   links:
     # Host to Switch Links

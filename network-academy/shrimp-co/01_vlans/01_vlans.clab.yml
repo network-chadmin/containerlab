@@ -28,7 +28,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
+        /usr/sbin/sshd ssh start
 
     linda:
       kind: linux
@@ -39,8 +39,8 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
-        
+        /usr/sbin/sshd ssh start
+
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.5
@@ -50,7 +50,7 @@ topology:
         ip route del default
 
         # Start SSH service
-        service ssh start
+        /usr/sbin/sshd ssh start
 
   links:
     - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
