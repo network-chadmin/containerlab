@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
     # Network services
     nginx \
     openssh-client \
+    openssh-server \
     telnet \
     # Network testing tools
     netcat-openbsd \
@@ -84,10 +85,20 @@ RUN echo '<!DOCTYPE html> \
 </body> \
 </html>' > /var/www/html/index.html
 
+RUN mkdir /var/run/sshd && \
+    # Enable password authentication
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
+    # Allow labuser to login
+    echo 'AllowUsers labuser' >> /etc/ssh/sshd_config && \
+    # Enable SSH service
+    systemctl enable ssh
+
 # Create a network lab user (non-root for security best practices)
 RUN useradd -ms /bin/bash labuser && \
     usermod -aG sudo labuser && \
-    echo "labuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    echo "labuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    # Set password for SSH access
+    echo 'labuser:admin' | chpasswd
 
 # Create startup script that handles both nginx and keeps container running
 RUN echo '#!/bin/bash \
