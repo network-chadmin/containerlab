@@ -27,8 +27,11 @@ topology:
         # Remove default route
         ip route del default
 
+        # Generate SSH host keys
+        sudo ssh-keygen -A
+
         # Start SSH service
-        /usr/sbin/service ssh start
+        sudo /usr/sbin/sshd ssh start
 
     linda:
       kind: linux
@@ -38,8 +41,11 @@ topology:
         # Remove default route
         ip route del default
 
+        # Generate SSH host keys
+        sudo ssh-keygen -A
+
         # Start SSH service
-        /usr/sbin/service ssh start
+        sudo /usr/sbin/sshd ssh start
 
     alice:
       kind: linux
@@ -49,8 +55,11 @@ topology:
         # Remove default route
         ip route del default
 
+        # Generate SSH host keys
+        sudo ssh-keygen -A
+
         # Start SSH service
-        /usr/sbin/service ssh start
+        sudo /usr/sbin/sshd ssh start
 
   links:
     - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
