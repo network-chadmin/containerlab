@@ -23,14 +23,34 @@ topology:
       kind: linux
       mgmt-ipv4: 172.20.25.3
       image: networkchadmin/network-host:latest
+      startup-config: |
+        # Remove default route
+        ip route del default
+
+        # Start SSH service
+        service ssh start
+
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.4
       image: networkchadmin/network-host:latest
+      startup-config: |
+        # Remove default route
+        ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.5
       image: networkchadmin/network-host:latest
+      startup-config: |
+        # Remove default route
+        ip route del default
+
+        # Start SSH service
+        service ssh start
 
   links:
     - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]

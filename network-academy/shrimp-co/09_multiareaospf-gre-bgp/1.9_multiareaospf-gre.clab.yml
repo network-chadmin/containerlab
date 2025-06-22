@@ -131,55 +131,100 @@ topology:
       mgmt-ipv4: 172.16.25.87
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     jim:
       kind: linux
       mgmt-ipv4: 172.16.25.80
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     rylie:
       kind: linux
       mgmt-ipv4: 172.16.25.85
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.88
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.89
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.90
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.91
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.92
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.93
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
 
   links:
     # Host to Switch Links

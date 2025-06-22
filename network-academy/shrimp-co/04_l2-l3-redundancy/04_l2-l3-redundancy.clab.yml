@@ -60,28 +60,44 @@ topology:
       mgmt-ipv4: 172.20.25.23
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
 
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.24
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
 
     steve:
       kind: linux
       mgmt-ipv4: 172.20.25.25
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
 
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.26
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
       
 
   links:

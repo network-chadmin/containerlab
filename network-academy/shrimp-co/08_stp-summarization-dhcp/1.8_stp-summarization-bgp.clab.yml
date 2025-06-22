@@ -89,43 +89,78 @@ topology:
       mgmt-ipv4: 172.16.25.67
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.68
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.69
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.70
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.71
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.72
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.73
       image: networkchadmin/network-host:latest
       startup-config: |
+        # Remove default route
         ip route del default
+
+        # Start SSH service
+        service ssh start
+        
 
   links:
     # Host to Switch Links
