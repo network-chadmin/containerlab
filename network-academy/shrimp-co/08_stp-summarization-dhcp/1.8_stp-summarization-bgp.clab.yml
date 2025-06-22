@@ -87,43 +87,43 @@ topology:
     google:
       kind: linux
       mgmt-ipv4: 172.16.25.67
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.68
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     gerald:
       kind: linux
       mgmt-ipv4: 172.16.25.69
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.70
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.71
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     sandra:
       kind: linux
       mgmt-ipv4: 172.16.25.72
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.73
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
 

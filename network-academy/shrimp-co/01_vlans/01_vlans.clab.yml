@@ -22,15 +22,15 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.20.25.3
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.4
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.5
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
 
   links:
     - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]

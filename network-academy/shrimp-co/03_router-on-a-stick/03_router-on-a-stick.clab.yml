@@ -43,28 +43,28 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.16.25.15
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
 
     alice:
       kind: linux
       mgmt-ipv4: 172.16.25.16
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
 
     steve:
       kind: linux
       mgmt-ipv4: 172.16.25.17
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
 
     linda:
       kind: linux
       mgmt-ipv4: 172.16.25.18
-      image: network-host:latest
+      image: networkchadmin/network-host:latest
       startup-config: |
         ip route del default
 
