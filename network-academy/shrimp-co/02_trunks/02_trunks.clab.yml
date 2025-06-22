@@ -34,57 +34,37 @@ topology:
       kind: linux
       mgmt-ipv4: 172.20.25.8
       image: networkchadmin/network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/service ssh start
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
 
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.9
       image: networkchadmin/network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/service ssh start
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
 
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.10
       image: networkchadmin/network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/service ssh start
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
 
     steve:
       kind: linux
       mgmt-ipv4: 172.20.25.11
       image: networkchadmin/network-host:latest
-      startup-config: |
-        # Remove default route
-        ip route del default
-
-        # Generate SSH host keys
-        sudo ssh-keygen -A
-
-        # Start SSH service
-        sudo /usr/sbin/service ssh start
+      exec:
+        - ip route del default
+        - ssh-keygen -A
+        - service ssh start
 
   links:
     # Host to Switch Links
