@@ -126,7 +126,7 @@ topology:
         int e0/0
         no cdp enable
 
-    isp-100:
+    volt-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.86
       image: vrnetlab/cisco_iol:17.15.01
@@ -138,7 +138,7 @@ topology:
         no cdp enable
         
     # Hosts
-    google:
+    sea-mart:
       kind: linux
       mgmt-ipv4: 172.16.25.87
       image: networkchadmin/network-host:latest
@@ -156,7 +156,7 @@ topology:
         - ssh-keygen -A
         - service ssh start
 
-    rylie:
+    sharon:
       kind: linux
       mgmt-ipv4: 172.16.25.85
       image: networkchadmin/network-host:latest

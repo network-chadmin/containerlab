@@ -62,7 +62,7 @@ topology:
         !
         int e0/0
         no cdp enable
-    isp-100:
+    volt-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.16.25.42
       image: vrnetlab/cisco_iol:17.15.01
@@ -73,7 +73,7 @@ topology:
         int e0/0
         no cdp enable
     # Hosts
-    google:
+    sea-mart:
       kind: linux
       mgmt-ipv4: 172.16.25.43
       image: networkchadmin/network-host:latest
