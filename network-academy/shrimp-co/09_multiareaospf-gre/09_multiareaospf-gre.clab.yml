@@ -2,7 +2,7 @@ name: 9_multiareaospf-gre-bgp
 
 mgmt:
   network: custom_mgmt
-  ipv4-subnet: 172.16.25.0/24
+  ipv4-subnet: 172.20.25.0/24
 
 topology:
   nodes:
