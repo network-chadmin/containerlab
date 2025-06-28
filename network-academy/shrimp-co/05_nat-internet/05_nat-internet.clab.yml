@@ -61,7 +61,7 @@ topology:
         int e0/0
         no cdp enable
     # Hosts
-    sea-mart:
+    seamart-server:
       kind: linux
       mgmt-ipv4: 172.16.25.32
       image: networkchadmin/network-host:latest
@@ -123,4 +123,4 @@ topology:
     - endpoints: [sea-mdf-r1:e0/2, "volt-r1:0/1"]
     - endpoints: [sea-mdf-r2:0/2, "volt-r1:0/2"]
     # Internet to Host Links:
-    - endpoints: [google:eth1, "volt-r1:e0/3"]
+    - endpoints: [seamart-server:eth1, "volt-r1:e0/3"]
