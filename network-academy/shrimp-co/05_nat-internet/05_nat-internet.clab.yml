@@ -9,7 +9,7 @@ topology:
     # Switches
     sea-a1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.27
+      mgmt-ipv4: 172.20.25.27
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -20,7 +20,7 @@ topology:
         no cdp enable
     sea-b1-asw1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.28
+      mgmt-ipv4: 172.20.25.28
       image: vrnetlab/cisco_iol:L2-17.15.01
       type: L2
       startup-config: |
@@ -32,7 +32,7 @@ topology:
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.29
+      mgmt-ipv4: 172.20.25.29
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -42,7 +42,7 @@ topology:
         no cdp enable
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.30
+      mgmt-ipv4: 172.20.25.30
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -52,7 +52,7 @@ topology:
         no cdp enable
     volt-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.16.25.31
+      mgmt-ipv4: 172.20.25.31
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
@@ -63,7 +63,7 @@ topology:
     # Hosts
     seamart-server:
       kind: linux
-      mgmt-ipv4: 172.16.25.32
+      mgmt-ipv4: 172.20.25.32
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -72,7 +72,7 @@ topology:
 
     bob:
       kind: linux
-      mgmt-ipv4: 172.16.25.33
+      mgmt-ipv4: 172.20.25.33
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -81,7 +81,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.16.25.34
+      mgmt-ipv4: 172.20.25.34
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -90,7 +90,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.16.25.35
+      mgmt-ipv4: 172.20.25.35
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
@@ -99,7 +99,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.16.25.36
+      mgmt-ipv4: 172.20.25.36
       image: networkchadmin/network-host:latest
       exec:
         - ip route del default
