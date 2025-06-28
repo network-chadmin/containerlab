@@ -120,7 +120,7 @@ topology:
     - endpoints: ["sea-a1-asw1:e1/1", "sea-mdf-r1:e0/1"]
     - endpoints: ["sea-b1-asw1:e0/5", "sea-mdf-r2:e0/1"]
     # Router to Router Links
-    - endpoints: [sea-mdf-r1:e0/2, "volt-r1:0/1"]
-    - endpoints: [sea-mdf-r2:0/2, "volt-r1:0/2"]
+    - endpoints: [sea-mdf-r1:e0/2, "volt-r1:e0/1"]
+    - endpoints: [sea-mdf-r2:e0/2, "volt-r1:e0/2"]
     # Internet to Host Links:
     - endpoints: [seamart-server:eth1, "volt-r1:e0/3"]
