@@ -11,26 +11,18 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.6
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.7
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
         
     # Hosts
     bob:
@@ -71,9 +63,9 @@ topology:
 
   links:
     # Host to Switch Links
-    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]
-    - endpoints: ["steve:eth1", "sea-b1-asw1:e0/1"]
-    - endpoints: ["linda:eth1", "sea-b1-asw1:e0/2"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:e0/3"]
+    - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:eth3"]

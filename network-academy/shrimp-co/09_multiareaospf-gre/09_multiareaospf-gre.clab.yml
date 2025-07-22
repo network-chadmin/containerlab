@@ -11,131 +11,92 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.74
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.75
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     mke-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.81
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     msp-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.84
-      image: ceos:latest
-      type: L2
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     # Distribution Switches
     sea-mdf-dsw1:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.76
-     image: ceos:latest
-     type: L2
+     image: ceos:4.32.5.1M
      startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     sea-mdf-dsw2:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.77
-     image: ceos:latest
-     type: L2
+     image: ceos:4.32.5.1M
      startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     # Routers
     sea-mdf-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.78
-      image: ceos:latest
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     sea-mdf-r2:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.79
-      image: ceos:latest
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     mke-a1-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.82
-      image: ceos:latest
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     msp-a1-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.83
-      image: ceos:latest
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
 
     volt-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.86
-      image: ceos:latest
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
-        !
-        int e0/0
-        no cdp enable
         
     # Hosts
     sea-mart:
@@ -221,34 +182,34 @@ topology:
 
   links:
     # Host to Switch Links
-    - endpoints: ["bob:eth1", "sea-a1-asw1:e0/1"]
-    - endpoints: ["alice:eth1", "sea-a1-asw1:e0/2"]
-    - endpoints: ["gerald:eth1", "sea-a1-asw1:e0/3"]
-    - endpoints: ["steve:eth1", "sea-b1-asw1:e0/1"]
-    - endpoints: ["sandra:eth1", "sea-a1-asw1:e0/3"]
-    - endpoints: ["linda:eth1", "sea-b1-asw1:e0/2"]
-    - endpoints: ["jim:eth1", "mke-a1-asw1:e0/1"]
-    - endpoints: ["rylie:eth1", "msp-a1-asw1:e0/1"]
+    - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
+    - endpoints: ["alice:eth1", "sea-a1-asw1:eth2"]
+    - endpoints: ["gerald:eth1", "sea-a1-asw1:eth3"]
+    - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
+    - endpoints: ["sandra:eth1", "sea-a1-asw1:eth3"]
+    - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
+    - endpoints: ["jim:eth1", "mke-a1-asw1:eth1"]
+    - endpoints: ["rylie:eth1", "msp-a1-asw1:eth1"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:e1/0", "sea-b1-asw1:e1/0"]
-    - endpoints: ["sea-a1-asw1:e1/1", "sea-b1-asw1:e1/1"]
-    - endpoints: ["sea-a1-asw1:e1/2", "sea-mdf-dsw1:e0/1"]
-    - endpoints: ["sea-a1-asw1:e1/3", "sea-mdf-dsw2:e0/2"]
-    - endpoints: ["sea-b1-asw1:e1/2", "sea-mdf-dsw2:e0/1"]
-    - endpoints: ["sea-b1-asw1:e1/3", "sea-mdf-dsw2:e0/2"]
-    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-dsw2:e1/0"]
-    - endpoints: ["sea-mdf-dsw1:e0/3", "sea-mdf-dsw2:e1/0"]
+    - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
+    - endpoints: ["sea-a1-asw1:eth5", "sea-b1-asw1:eth5"]
+    - endpoints: ["sea-a1-asw1:eth6", "sea-mdf-dsw1:eth1"]
+    - endpoints: ["sea-a1-asw1:eth7", "sea-mdf-dsw2:eth2"]
+    - endpoints: ["sea-b1-asw1:eth6", "sea-mdf-dsw2:eth1"]
+    - endpoints: ["sea-b1-asw1:eth7", "sea-mdf-dsw2:eth2"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
     # Switch to Router Links
-    - endpoints: ["sea-mdf-dsw1:e1/1", "sea-mdf-r1:e0/1"]
-    - endpoints: ["sea-mdf-dsw1:e1/2", "sea-mdf-r2:e0/2"]
-    - endpoints: ["sea-mdf-dsw2:e1/1", "sea-mdf-r1:e0/1"]
-    - endpoints: ["sea-mdf-dsw2:e1/2", "sea-mdf-r2:e0/2"]
-    - endpoints: ["mke-a1-asw1:e0/2", "mke-a1-r1:e0/1"]
-    - endpoints: ["msp-a1-asw1:e0/2", "mke-a1-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:eth2"]
+    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:eth1"]
+    - endpoints: ["sea-mdf-dsw2:eth6", "sea-mdf-r2:eth2"]
+    - endpoints: ["mke-a1-asw1:eth2", "mke-a1-r1:eth1"]
+    - endpoints: ["msp-a1-asw1:eth2", "mke-a1-r1:eth1"]
     # Router to Router Links
-    - endpoints: ["sea-mdf-r1:e0/3", "isp-100:e0/1"]
-    - endpoints: ["sea-mdf-r2:e0/3", "isp-100:e0/2"]
-    - endpoints: ["mke-a1-r1:e0/2", "isp-100:e0/3"]
-    - endpoints: ["msp-a1-r2:e0/2", "isp-100:e1/0"]
+    - endpoints: ["sea-mdf-r1:eth3", "isp-100:eth1"]
+    - endpoints: ["sea-mdf-r2:eth3", "isp-100:eth2"]
+    - endpoints: ["mke-a1-r1:eth2", "isp-100:eth3"]
+    - endpoints: ["msp-a1-r2:eth2", "isp-100:eth4"]
     # Internet to Host Links
-    - endpoints: [google:eth1, "isp-100:e1/1"]
+    - endpoints: [google:eth1, "isp-100:eth5"]

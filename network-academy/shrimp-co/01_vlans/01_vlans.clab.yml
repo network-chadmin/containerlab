@@ -10,7 +10,7 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.2
-      image: ceos:4.32
+      image: ceos:4.32.5.1M
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
