@@ -14,6 +14,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     sea-b1-asw1:
       kind: arista_ceos
@@ -22,6 +23,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     # Distribution Switches
     sea-mdf-dsw1:
@@ -31,6 +33,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     # Routers
     sea-mdf-r1:
@@ -40,6 +43,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     sea-mdf-r2:
       kind: arista_ceos
@@ -48,6 +52,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     volt-r1:
       kind: arista_ceos
@@ -56,6 +61,7 @@ topology:
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
+        username admin privilege 15 secret admin
 
     # Hosts
     sea-mart:
