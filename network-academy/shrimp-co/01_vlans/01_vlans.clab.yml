@@ -10,7 +10,7 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.2
-      image: ceos:latest
+      image: ceos:4.32
       type: L2
       startup-config: |
         configure terminal
