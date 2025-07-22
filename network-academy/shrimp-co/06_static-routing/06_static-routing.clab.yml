@@ -8,9 +8,9 @@ topology:
   nodes:
     # Access Switches
     sea-a1-asw1:
-      kind: cisco_iol
+      kind: arista_ceos
       mgmt-ipv4: 172.20.25.37
-      image: vrnetlab/cisco_iol:L2-17.15.01
+      image: arista_ceos
       type: L2
       startup-config: |
         configure terminal
@@ -19,9 +19,9 @@ topology:
         int e0/0
         no cdp enable
     sea-b1-asw1:
-      kind: cisco_iol
+      kind: arista_ceos
       mgmt-ipv4: 172.20.25.38
-      image: vrnetlab/cisco_iol:L2-17.15.01
+      image: arista_ceos
       type: L2
       startup-config: |
         configure terminal
@@ -31,9 +31,9 @@ topology:
         no cdp enable
     # Distribution Switches
     sea-mdf-dsw1:
-     kind: cisco_iol
+     kind: arista_ceos
      mgmt-ipv4: 172.20.25.39
-     image: vrnetlab/cisco_iol:L2-17.15.01
+     image: arista_ceos
      type: L2
      startup-config: |
         configure terminal
@@ -43,9 +43,9 @@ topology:
         no cdp enable
     # Routers
     sea-mdf-r1:
-      kind: cisco_iol
+      kind: arista_ceos
       mgmt-ipv4: 172.20.25.40
-      image: vrnetlab/cisco_iol:17.15.01
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
@@ -53,9 +53,9 @@ topology:
         int e0/0
         no cdp enable
     sea-mdf-r2:
-      kind: cisco_iol
+      kind: arista_ceos
       mgmt-ipv4: 172.20.25.41
-      image: vrnetlab/cisco_iol:17.15.01
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
@@ -63,9 +63,9 @@ topology:
         int e0/0
         no cdp enable
     volt-r1:
-      kind: cisco_iol
+      kind: arista_ceos
       mgmt-ipv4: 172.20.25.42
-      image: vrnetlab/cisco_iol:17.15.01
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1

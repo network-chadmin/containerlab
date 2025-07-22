@@ -10,7 +10,7 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.27
-      image: 4.34.1F-EFT3
+      image: ceos:latest
       type: L2
       startup-config: |
         configure terminal
@@ -21,7 +21,7 @@ topology:
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.28
-      image: 4.34.1F-EFT3
+      image: ceos:latest
       type: L2
       startup-config: |
         configure terminal
@@ -33,7 +33,7 @@ topology:
     sea-mdf-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.29
-      image: 4.34.1F-EFT3
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
@@ -43,7 +43,7 @@ topology:
     sea-mdf-r2:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.30
-      image: 4.34.1F-EFT3
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
@@ -53,7 +53,7 @@ topology:
     volt-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.31
-      image: 4.34.1F-EFT3
+      image: ceos:latest
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
