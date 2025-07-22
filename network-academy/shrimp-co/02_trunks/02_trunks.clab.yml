@@ -68,4 +68,4 @@ topology:
     - endpoints: ["steve:eth1", "sea-b1-asw1:eth1"]
     - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
     # Switch to Switch Links
-    - endpoints: ["sea-a1-asw1:e0/3", "sea-b1-asw1:eth3"]
+    - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
