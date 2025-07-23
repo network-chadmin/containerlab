@@ -152,8 +152,8 @@ topology:
     - endpoints: ["sea-a1-asw1:eth7", "sea-mdf-dsw2:eth2"]
     - endpoints: ["sea-b1-asw1:eth6", "sea-mdf-dsw2:eth1"]
     - endpoints: ["sea-b1-asw1:eth7", "sea-mdf-dsw2:eth2"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth3"]
+    - endpoints: ["sea-mdf-dsw1:eth4", "sea-mdf-dsw2:eth4"]
     # Switch to Router Links
     - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:eth1"]
     - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:eth2"]
