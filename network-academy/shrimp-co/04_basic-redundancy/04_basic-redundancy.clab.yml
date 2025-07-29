@@ -1,4 +1,4 @@
-name: 3_l2-l3-redundancy
+name: 4_basic-redundancy
 
 mgmt:
   network: custom_mgmt
