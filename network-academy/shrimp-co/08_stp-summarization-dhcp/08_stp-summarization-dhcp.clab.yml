@@ -13,18 +13,34 @@ topology:
       mgmt-ipv4: 172.20.25.60
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.60/24
+         no lldp transmit
+         no lldp receive
 
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.61
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.61/24
+         no lldp transmit
+         no lldp receive
 
     # Distribution Switches
     sea-mdf-dsw1:
@@ -32,46 +48,85 @@ topology:
      mgmt-ipv4: 172.20.25.62
      image: ceos:4.32.5.1M
      startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.62/24
+         no lldp transmit
+         no lldp receive
 
     sea-mdf-dsw2:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.63
      image: ceos:4.32.5.1M
      startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.63/24
+         no lldp transmit
+         no lldp receive
 
     # Routers
     sea-mdf-r1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.64
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
-        configure terminal
-        no ip route 0.0.0.0/0 172.20.25.1
+        configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
+        no cdp run
 
     sea-mdf-r2:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.65
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
-        configure terminal
-        no ip route 0.0.0.0/0 172.20.25.1
+        configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
+        no cdp run
 
     volt-r1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.66
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
-        configure terminal
-        no ip route 0.0.0.0/0 172.20.25.1
+        configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
+        no cdp run
+        !
+        interface ethernet0/1
+         ip address 100.10.1.1 255.255.255.248
+         description sea-mdf-r1 Eth2
+         no shutdown
+        !
+        interface ethernet0/2
+         ip address 100.10.1.9 255.255.255.248
+         description sea-mdf-r2 Eth2
+        !
+        interface ethernet0/3
+         ip address 123.123.123.1 255.255.255.0
+         desc Seamart Server
+         no shutdown
         
     # Hosts
     sea-mart:
@@ -155,12 +210,12 @@ topology:
     - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth3"]
     - endpoints: ["sea-mdf-dsw1:eth4", "sea-mdf-dsw2:eth4"]
     # Switch to Router Links
-    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:eth2"]
-    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-mdf-dsw2:eth6", "sea-mdf-r2:eth2"]
+    - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:eth6", "sea-mdf-r2:e0/2"]
+    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-mdf-dsw2:eth6", "sea-mdf-r2:e0/2"]
     # Router to Router Links
-    - endpoints: ["sea-mdf-r1:eth3", "isp-100:eth1"]
-    - endpoints: ["sea-mdf-r2:eth3", "isp-100:eth2"]
+    - endpoints: ["sea-mdf-r1:e0/3", "volt-r1:e0/1"]
+    - endpoints: ["sea-mdf-r2:e0/3", "volt-r1:e0/2"]
     # Internet to Host Links
-    - endpoints: [google:eth1, "isp-100:eth3"]
+    - endpoints: [google:eth1, "volt-r1:e0/3"]

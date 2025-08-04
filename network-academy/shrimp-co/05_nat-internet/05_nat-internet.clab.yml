@@ -48,16 +48,8 @@ topology:
       image: ceos:4.32.5.1M
       startup-config: |
         configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         vrf Management
-         ip address 172.20.25.29/24
-         no lldp transmit
-         no lldp receive
+        no cdp run
         
     sea-mdf-r2:
       kind: arista_ceos
@@ -65,49 +57,31 @@ topology:
       image: ceos:4.32.5.1M
       startup-config: |
         configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         vrf Management
-         ip address 172.20.25.30/24
-         no lldp transmit
-         no lldp receive
+        no cdp run
         
     volt-r1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.31
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
-        ip routing
+        no cdp run
         !
-        interface Management0
-         vrf Management
-         ip address 172.20.25.31/24
-         no lldp transmit
-         no lldp receive
-        !
-        interface ethernet1
-         no switchport
-         ip address 100.10.1.1/29
+        interface ethernet0/1
+         ip address 100.10.1.1 255.255.255.248
          description sea-mdf-r1 Eth2
+         no shutdown
         !
-        interface ethernet2
-         no switchport
-         ip address 100.10.1.9/29
+        interface ethernet0/2
+         ip address 100.10.1.9 255.255.255.248
          description sea-mdf-r2 Eth2
         !
-        interface ethernet3
-         no switchport
-         ip address 123.123.123.1/24
+        interface ethernet0/3
+         ip address 123.123.123.1 255.255.255.0
          desc Seamart Server
+         no shutdown
 
     # Hosts
     seamart-server:
@@ -168,10 +142,10 @@ topology:
     - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
     - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-r2:eth1"]
+    - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-r1:e0/1"]
+    - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-r2:e0/1"]
     # Router to Router Links
-    - endpoints: ["sea-mdf-r1:eth2", "volt-r1:eth1"]
-    - endpoints: ["sea-mdf-r2:eth2", "volt-r1:eth2"]
+    - endpoints: ["sea-mdf-r1:e0/2", "volt-r1:e0/1"]
+    - endpoints: ["sea-mdf-r2:e0/2", "volt-r1:e0/2"]
     # Internet to Host Links:
-    - endpoints: ["seamart-server:eth1", "volt-r1:eth3"]
+    - endpoints: ["seamart-server:eth1", "volt-r1:e0/3"]
