@@ -28,13 +28,14 @@ topology:
 
     # Routers
     sea-mdf-r1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.14
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure terminal
         no ip route 0.0.0.0/0 172.20.25.1
         username admin privilege 15 secret admin
+        no cdp run
     # Hosts
     bob:
       kind: linux
@@ -81,5 +82,5 @@ topology:
     # Switch to Switch Links
     - endpoints: ["sea-a1-asw1:eth3", "sea-b1-asw1:eth3"]
     # Switch to Router Links
-    - endpoints: ["sea-a1-asw1:eth4", "sea-mdf-r1:eth1"]
-    - endpoints: ["sea-b1-asw1:eth4", "sea-mdf-r1:eth2"]
+    - endpoints: ["sea-a1-asw1:eth4", "sea-mdf-r1:eth0/1"]
+    - endpoints: ["sea-b1-asw1:eth4", "sea-mdf-r1:eth0/2"]

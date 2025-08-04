@@ -12,18 +12,34 @@ topology:
       mgmt-ipv4: 172.20.25.27
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.27/24
+         no lldp transmit
+         no lldp receive
         
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.28
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         ip address 172.20.25.28/24
+         vrf Management
+         no lldp transmit
+         no lldp receive
         
     # Routers
     sea-mdf-r1:
@@ -31,28 +47,68 @@ topology:
       mgmt-ipv4: 172.20.25.29
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.29/24
+         no lldp transmit
+         no lldp receive
         
     sea-mdf-r2:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.30
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
+        no lldp run
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.30/24
+         no lldp transmit
+         no lldp receive
         
     volt-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.31
       image: ceos:4.32.5.1M
       startup-config: |
-        configure terminal
+        configure
         no ip route 0.0.0.0/0 172.20.25.1
+        vrf instance Management
         username admin privilege 15 secret admin
-        
+        no lldp run
+        ip routing
+        !
+        interface Management0
+         vrf Management
+         ip address 172.20.25.31/24
+         no lldp transmit
+         no lldp receive
+        !
+        interface ethernet1
+         no switchport
+         ip address 100.10.1.1/29
+         description sea-mdf-r1 Eth2
+        !
+        interface ethernet2
+         no switchport
+         ip address 100.10.1.9/29
+         description sea-mdf-r2 Eth2
+        !
+        interface ethernet3
+         no switchport
+         ip address 123.123.123.1/24
+         desc Seamart Server
+
     # Hosts
     seamart-server:
       kind: linux
@@ -62,6 +118,8 @@ topology:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
+        - ip addr add 123.123.123.123/24
+        - ip route add default via 123.123.123.1 dev eth1
 
     bob:
       kind: linux
