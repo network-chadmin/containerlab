@@ -43,20 +43,26 @@ topology:
         
     # Routers
     sea-mdf-r1:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.29
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
         no cdp run
         
     sea-mdf-r2:
-      kind: arista_ceos
+      kind: cisco_iol
       mgmt-ipv4: 172.20.25.30
-      image: ceos:4.32.5.1M
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
         no cdp run
         
@@ -66,6 +72,9 @@ topology:
       image: vrnetlab/cisco_iol:17.15.01
       startup-config: |
         configure
+        interface ethernet0/0
+         no lldp transmit
+         no lldp receive
         username admin privilege 15 secret admin
         no cdp run
         !
