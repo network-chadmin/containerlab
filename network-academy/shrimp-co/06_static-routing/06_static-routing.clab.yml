@@ -171,7 +171,7 @@ topology:
     - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-dsw1:eth2"]
     # Switch to Router Links
     - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-r1:e0/1"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-r2:e0/1"]
+    - endpoints: ["sea-mdf-dsw1:eth4", "sea-mdf-r2:e0/1"]
     # Router to Router Links
     - endpoints: ["sea-mdf-r1:e0/2", "volt-r1:e0/1"]
     - endpoints: ["sea-mdf-r2:e0/2", "volt-r1:e0/2"]
