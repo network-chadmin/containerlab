@@ -137,6 +137,8 @@ topology:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
+        - ip addr add 123.123.123.123/24 dev eth1
+        - ip route add default via 123.123.123.1 dev eth1
 
     bob:
       kind: linux
@@ -185,13 +187,13 @@ topology:
     - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
     - endpoints: ["sea-a1-asw1:eth5", "sea-mdf-dsw1:eth1"]
     - endpoints: ["sea-b1-asw1:eth5", "sea-mdf-dsw2:eth1"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
-    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth4"]
+    - endpoints: ["sea-mdf-dsw1:eth3", "sea-mdf-dsw2:eth3"]
+    - endpoints: ["sea-mdf-dsw1:eth4", "sea-mdf-dsw2:eth4"]
     # Switch to Router Links
     - endpoints: ["sea-mdf-dsw1:eth2", "sea-mdf-r1:e0/1"]
     - endpoints: ["sea-mdf-dsw1:eth5", "sea-mdf-r2:e0/2"]
-    - endpoints: ["sea-mdf-dsw2:eth2", "sea-mdf-r1:e0/1"]
-    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r2:e0/2"]
+    - endpoints: ["sea-mdf-dsw2:eth5", "sea-mdf-r1:e0/2"]
+    - endpoints: ["sea-mdf-dsw2:eth2", "sea-mdf-r2:e0/1"]
     # Router to Router Links
     - endpoints: ["sea-mdf-r1:e0/3", "volt-r1:e0/1"]
     - endpoints: ["sea-mdf-r2:e0/3", "volt-r1:e0/2"]
