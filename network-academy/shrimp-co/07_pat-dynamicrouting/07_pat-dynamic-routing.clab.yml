@@ -129,7 +129,7 @@ topology:
          no shutdown
         
     # Hosts
-    sea-mart:
+    seamart-server:
       kind: linux
       mgmt-ipv4: 172.20.25.55
       image: networkchadmin/network-host:latest
