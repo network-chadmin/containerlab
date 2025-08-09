@@ -101,6 +101,7 @@ topology:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
+        - service nginx start
         - ip addr add 123.123.123.123/24 dev eth1
         - ip route add default via 123.123.123.1 dev eth1
 
