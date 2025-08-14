@@ -129,7 +129,7 @@ topology:
          no shutdown
         
     # Hosts
-    sea-mart:
+    seamart-server:
       kind: linux
       mgmt-ipv4: 172.20.25.67
       image: networkchadmin/network-host:latest
@@ -218,4 +218,4 @@ topology:
     - endpoints: ["sea-mdf-r1:e0/3", "volt-r1:e0/1"]
     - endpoints: ["sea-mdf-r2:e0/3", "volt-r1:e0/2"]
     # Internet to Host Links
-    - endpoints: [google:eth1, "volt-r1:e0/3"]
+    - endpoints: [seamart-server:eth1, "volt-r1:e0/3"]
