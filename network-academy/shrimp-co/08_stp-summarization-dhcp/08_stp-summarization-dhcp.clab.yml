@@ -17,7 +17,6 @@ topology:
         no ip route 0.0.0.0/0 172.20.25.1
         vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
         !
         interface Management0
          vrf Management
@@ -34,7 +33,6 @@ topology:
         no ip route 0.0.0.0/0 172.20.25.1
         vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
         !
         interface Management0
          vrf Management
@@ -52,7 +50,6 @@ topology:
         no ip route 0.0.0.0/0 172.20.25.1
         vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
         !
         interface Management0
          vrf Management
@@ -69,7 +66,6 @@ topology:
         no ip route 0.0.0.0/0 172.20.25.1
         vrf instance Management
         username admin privilege 15 secret admin
-        no lldp run
         !
         interface Management0
          vrf Management
@@ -85,10 +81,8 @@ topology:
       startup-config: |
         configure
         interface ethernet0/0
-         no lldp transmit
-         no lldp receive
+        no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     sea-mdf-r2:
       kind: cisco_iol
@@ -97,8 +91,7 @@ topology:
       startup-config: |
         configure
         interface ethernet0/0
-         no lldp transmit
-         no lldp receive
+        no cdp enable
         username admin privilege 15 secret admin
         no cdp run
 
@@ -109,10 +102,8 @@ topology:
       startup-config: |
         configure
         interface ethernet0/0
-         no lldp transmit
-         no lldp receive
+        no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
         !
         interface ethernet0/1
          ip address 100.10.1.1 255.255.255.248
