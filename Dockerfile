@@ -117,8 +117,6 @@ RUN mkdir /var/run/sshd && \
     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
     # Allow labuser to login
     echo 'AllowUsers labuser' >> /etc/ssh/sshd_config && \
-    # Enable SSH service
-    systemctl enable ssh
 
 # Create a network lab user (non-root for security best practices)
 RUN useradd -ms /bin/bash labuser && \
