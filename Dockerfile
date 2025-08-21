@@ -57,7 +57,6 @@ RUN apt-get update && apt-get install -y \
     # Miscellanous
     debianutils \
     libc6 \
-
     # Clean up package cache to reduce image size
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -117,7 +116,6 @@ RUN mkdir /var/run/sshd && \
     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
     # Allow labuser to login
     echo 'AllowUsers labuser' >> /etc/ssh/sshd_config && \
-
 # Create a network lab user (non-root for security best practices)
 RUN useradd -ms /bin/bash labuser && \
     usermod -aG sudo labuser && \
