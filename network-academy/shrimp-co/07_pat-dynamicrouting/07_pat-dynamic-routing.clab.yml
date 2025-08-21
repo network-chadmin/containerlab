@@ -85,8 +85,7 @@ topology:
       startup-config: |
         configure
         interface ethernet0/0
-         no lldp transmit
-         no lldp receive
+        no cdp run
         username admin privilege 15 secret admin
         no cdp run
 

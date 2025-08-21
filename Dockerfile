@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
     openssh-client \
     openssh-server \
     telnet \
+    isc-dhcp-client \
     # Network testing tools
     netcat-openbsd \
     socat \
@@ -53,6 +54,10 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     # Traditional networking (for ifupdown)
     ifupdown \
+    # Miscellanous
+    debianutils \
+    libc6 \
+
     # Clean up package cache to reduce image size
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -73,17 +78,39 @@ RUN echo 'server { \
     } \
 }' > /etc/nginx/sites-available/default
 
-# Create a simple test webpage
-RUN echo '<!DOCTYPE html> \
-<html> \
-<head><title>Network Lab Test</title></head> \
-<body> \
-<h1>Network Lab Container</h1> \
-<p>This container is running nginx for connectivity testing.</p> \
-<p>Hostname: <span id="hostname"></span></p> \
-<script>document.getElementById("hostname").innerHTML = window.location.hostname;</script> \
-</body> \
-</html>' > /var/www/html/index.html
+RUN mkdir -p /var/www/html && cat <<'EOF' > /var/www/html/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SeaMart Partner Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body { margin:0; padding:0; font-family: Arial, sans-serif; background:#f4f7f9; color:#222; }
+    header { background:#004f6e; color:#fff; padding: 20px 40px; }
+    header h1 { margin:0; font-size: 26px; }
+    main { max-width: 800px; margin: 40px auto; background:#fff; padding: 32px; border-radius:8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+    p { line-height: 1.5; }
+    .muted { color: #666; font-size: 0.9rem; }
+    code { background:#f0f0f0; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SeaMart Partner Portal</h1>
+  </header>
+  <main>
+    <p>Welcome to the <strong>SeaMart Partner Portal</strong>. This secure gateway is used by partners, suppliers, and Shrimp Co. employees to access shared resources and applications.</p>
+    <p class="muted">If you have reached this page during a lab exercise, you have successfully connected to the SeaMart edge web server.</p>
+    <p><strong>Server Hostname:</strong> <span id="hostname">Loading…</span></p>
+    <p class="muted">Try <code>curl http://seamart.com</code> from a lab host or browse to this page to validate NAT, routing, and DNS.</p>
+  </main>
+  <script>
+    document.getElementById("hostname").textContent = window.location.hostname;
+  </script>
+</body>
+</html>
+EOF
 
 RUN mkdir /var/run/sshd && \
     # Enable password authentication
