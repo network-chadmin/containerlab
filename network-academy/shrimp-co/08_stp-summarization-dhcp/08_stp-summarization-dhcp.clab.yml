@@ -118,6 +118,14 @@ topology:
          ip address 123.123.123.1 255.255.255.0
          desc Seamart Server
          no shutdown
+        !
+        interface loopback0
+         ip address 8.8.8.8 255.255.255.255
+         description google
+        !
+        ip dns server
+        !
+        ip host seamart.com 123.123.123.123
         
     # Hosts
     seamart-server:
@@ -128,6 +136,9 @@ topology:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
+        - service nginx start
+        - ip addr add 123.123.123.123/24 dev eth1
+        - ip route add default via 123.123.123.1 dev eth1
 
     bob:
       kind: linux

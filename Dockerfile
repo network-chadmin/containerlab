@@ -61,6 +61,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+    # Configure dhclient to override Docker's DNS resolver
+RUN echo 'supersede domain-name-servers;' > /etc/dhcp/dhclient.conf && \
+    echo 'prepend domain-name-servers;' >> /etc/dhcp/dhclient.conf
+
 # Create nginx directory structure and fix permissions
 RUN mkdir -p /var/log/nginx /var/lib/nginx /run \
     && chown -R www-data:www-data /var/log/nginx /var/lib/nginx
