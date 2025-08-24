@@ -286,7 +286,7 @@ topology:
     - endpoints: ["sandra:eth1", "sea-a1-asw1:eth3"]
     - endpoints: ["linda:eth1", "sea-b1-asw1:eth2"]
     - endpoints: ["jim:eth1", "mke-a1-asw1:eth1"]
-    - endpoints: ["rylie:eth1", "msp-a1-asw1:eth1"]
+    - endpoints: ["sharon:eth1", "msp-a1-asw1:eth1"]
     # Switch to Switch Links
     - endpoints: ["sea-a1-asw1:eth4", "sea-b1-asw1:eth4"]
     - endpoints: ["sea-a1-asw1:eth5", "sea-b1-asw1:eth5"]
