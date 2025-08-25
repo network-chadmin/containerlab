@@ -307,6 +307,6 @@ topology:
     - endpoints: ["sea-mdf-r1:e0/3", "volt-r1:e0/1"]
     - endpoints: ["sea-mdf-r2:e0/3", "volt-r1:e0/2"]
     - endpoints: ["mke-a1-r1:e0/2", "volt-r1:e0/3"]
-    - endpoints: ["msp-a1-r2:e0/2", "volt-r1:e1/0"]
+    - endpoints: ["msp-a1-r1:e0/2", "volt-r1:e1/0"]
     # Internet to Host Links
     - endpoints: [seamart-server:eth1, "volt-r1:e1/1"]
