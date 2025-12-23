@@ -11,7 +11,7 @@ topology:
     sea-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.48
-      image: ceos:4.32.5.1M
+      image: ceos:4.34.4M
       startup-config: |
         configure
         no ip route 0.0.0.0/0 172.20.25.1
@@ -28,7 +28,7 @@ topology:
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.49
-      image: ceos:4.32.5.1M
+      image: ceos:4.34.4M
       startup-config: |
         configure
         no ip route 0.0.0.0/0 172.20.25.1
@@ -46,7 +46,7 @@ topology:
     sea-mdf-dsw1:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.50
-     image: ceos:4.32.5.1M
+     image: ceos:4.34.4M
      startup-config: |
         configure
         no ip route 0.0.0.0/0 172.20.25.1
@@ -63,7 +63,7 @@ topology:
     sea-mdf-dsw2:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.51
-     image: ceos:4.32.5.1M
+     image: ceos:4.34.4M
      startup-config: |
         configure
         no ip route 0.0.0.0/0 172.20.25.1
