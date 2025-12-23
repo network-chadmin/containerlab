@@ -200,7 +200,15 @@ topology:
         !
         ip dns server
         !
+        ip route 0.0.0.0 0.0.0.0 null0
+        !
         ip host seamart.com 123.123.123.123
+        !
+        router bgp 200
+          bgp log-neighbor-changes
+          neighbor 100.10.1.2 remote-as 1001
+          neighbor 100.10.1.10 remote-as 1001
+          network 0.0.0.0 mask 0.0.0.0
         
     # Hosts
     seamart-server:
