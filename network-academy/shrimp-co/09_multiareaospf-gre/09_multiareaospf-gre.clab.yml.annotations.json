@@ -1,0 +1,31 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "sea-mdf-r1",
+      "interfacePattern": "e0/{n}"
+    },
+    {
+      "id": "sea-mdf-r2",
+      "interfacePattern": "e0/{n}"
+    },
+    {
+      "id": "mke-a1-r1",
+      "interfacePattern": "e0/{n}"
+    },
+    {
+      "id": "msp-a1-r1",
+      "interfacePattern": "e0/{n}"
+    },
+    {
+      "id": "volt-r1",
+      "interfacePattern": "e0/{n}"
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}

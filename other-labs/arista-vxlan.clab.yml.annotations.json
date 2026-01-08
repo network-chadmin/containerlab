@@ -1,0 +1,137 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "lab-leaf2",
+      "icon": "leaf",
+      "position": {
+        "x": 77,
+        "y": 77
+      },
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "lab-leaf3",
+      "position": {
+        "x": 189,
+        "y": 77
+      },
+      "icon": "leaf",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "lab-leaf4",
+      "position": {
+        "x": 301,
+        "y": 77
+      },
+      "icon": "switch",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "lab-spine1",
+      "position": {
+        "x": 21,
+        "y": -7
+      },
+      "icon": "spine",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "lab-spine2",
+      "position": {
+        "x": 245,
+        "y": -7
+      },
+      "icon": "spine",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "lab-leaf1",
+      "position": {
+        "x": -35,
+        "y": 77
+      },
+      "icon": "switch",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host1",
+      "position": {
+        "x": -63,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host2",
+      "position": {
+        "x": -7,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host3",
+      "position": {
+        "x": 49,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host4",
+      "position": {
+        "x": 105,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host5",
+      "position": {
+        "x": 161,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host6",
+      "position": {
+        "x": 217,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host7",
+      "position": {
+        "x": 273,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    },
+    {
+      "id": "host8",
+      "position": {
+        "x": 329,
+        "y": 147
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n:1}"
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
