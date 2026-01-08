@@ -206,6 +206,7 @@ topology:
         !
         router bgp 200
           bgp log-neighbor-changes
+          soft-reconfiguration inbound
           neighbor 100.10.1.2 remote-as 1001
           neighbor 100.10.1.10 remote-as 1001
           network 0.0.0.0 mask 0.0.0.0
