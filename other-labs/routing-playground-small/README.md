@@ -102,6 +102,8 @@ guaranteed never routable, so it's safe to publish.
 - Point-to-point interface addressing (IPv4 + IPv6) on every link
 - QoL: `logging synchronous`, `exec-timeout 0`, `no ip domain-lookup`,
   millisecond-timestamped logs, `ipv6 unicast-routing`
+- `no cdp enable` on Ethernet0/0 (mgmt) only, so `show cdp neighbors` reflects
+  the real topology instead of every node on the shared mgmt network
 - **No routing protocol.** Interfaces are directly connected only — that's
   the next lab.
 

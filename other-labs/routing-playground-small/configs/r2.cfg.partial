@@ -19,6 +19,9 @@ line vty 0 4
  logging synchronous
  exec-timeout 0
 !
+interface Ethernet0/0
+ no cdp enable
+!
 interface Loopback0
  description Router-ID
  ip address 2.2.2.2 255.255.255.255
