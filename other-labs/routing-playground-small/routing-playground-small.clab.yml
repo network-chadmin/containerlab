@@ -1,0 +1,25 @@
+name: routing-playground-small
+
+topology:
+  defaults:
+    kind: cisco_iol
+
+  kinds:
+    cisco_iol:
+      image: vrnetlab/cisco_iol:17.15.01
+      startup-config: configs/__clabNodeName__.cfg.partial
+      enforce-startup-config: true
+
+  nodes:
+    r1:
+    r2:
+    r3:
+    r4:
+    r5:
+
+  links:
+    - endpoints: ["r1:Ethernet0/1", "r2:Ethernet0/1"]
+    - endpoints: ["r1:Ethernet0/2", "r3:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet0/2", "r4:Ethernet0/1"]
+    - endpoints: ["r3:Ethernet0/2", "r4:Ethernet0/2"]
+    - endpoints: ["r4:Ethernet0/3", "r5:Ethernet0/1"]

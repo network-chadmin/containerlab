@@ -93,7 +93,6 @@ topology:
         interface ethernet0/0
         no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     volt-r1:
       kind: cisco_iol

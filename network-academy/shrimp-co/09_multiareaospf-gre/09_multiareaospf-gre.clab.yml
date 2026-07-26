@@ -121,8 +121,8 @@ topology:
         interface ethernet0/0
          no lldp transmit
          no lldp receive
+         no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     sea-mdf-r2:
       kind: cisco_iol
@@ -133,8 +133,8 @@ topology:
         interface ethernet0/0
          no lldp transmit
          no lldp receive
+         no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     mke-a1-r1:
       kind: cisco_iol
@@ -145,8 +145,8 @@ topology:
         interface ethernet0/0
          no lldp transmit
          no lldp receive
+         no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     msp-a1-r1:
       kind: cisco_iol
@@ -157,8 +157,8 @@ topology:
         interface ethernet0/0
          no lldp transmit
          no lldp receive
+         no cdp enable
         username admin privilege 15 secret admin
-        no cdp run
 
     volt-r1:
       kind: cisco_iol
