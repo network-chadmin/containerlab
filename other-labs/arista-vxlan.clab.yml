@@ -1,0 +1,64 @@
+name: arista-vxlan
+
+topology:
+  nodes:
+    lab-leaf2:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    lab-leaf3:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    lab-leaf4:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    lab-spine1:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    lab-spine2:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    lab-leaf1:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+    host1:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host2:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host3:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host4:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host5:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host6:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host7:
+      kind: linux
+      image: networkchadmin/network-host:latest
+    host8:
+      kind: linux
+      image: networkchadmin/network-host:latest
+
+  links:
+    - endpoints: [ "lab-leaf1:eth1", "lab-spine1:eth1" ]
+    - endpoints: [ "lab-leaf1:eth2", "lab-spine2:eth1" ]
+    - endpoints: [ "lab-leaf2:eth0", "lab-spine1:eth2" ]
+    - endpoints: [ "lab-leaf2:eth1", "lab-spine2:eth2" ]
+    - endpoints: [ "lab-leaf3:eth1", "lab-spine1:eth3" ]
+    - endpoints: [ "lab-leaf3:eth2", "lab-spine2:eth3" ]
+    - endpoints: [ "lab-leaf4:eth1", "lab-spine1:eth4" ]
+    - endpoints: [ "lab-leaf4:eth2", "lab-spine2:eth4" ]
+    - endpoints: [ "host1:eth1", "lab-leaf1:eth3" ]
+    - endpoints: [ "host2:eth1", "lab-leaf1:eth4" ]
+    - endpoints: [ "host3:eth1", "lab-leaf2:eth2" ]
+    - endpoints: [ "host4:eth1", "lab-leaf2:eth3" ]
+    - endpoints: [ "host5:eth1", "lab-leaf3:eth3" ]
+    - endpoints: [ "host6:eth1", "lab-leaf3:eth4" ]
+    - endpoints: [ "host7:eth1", "lab-leaf4:eth3" ]
+    - endpoints: [ "host8:eth1", "lab-leaf4:eth4" ]
