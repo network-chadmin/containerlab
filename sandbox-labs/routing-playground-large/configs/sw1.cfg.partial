@@ -1,0 +1,42 @@
+hostname SW1
+!
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no ip domain-lookup
+!
+banner motd ^
+##############################################
+# Routing Playground - Large
+# Node: SW1 (L2 switch)
+##############################################
+^
+!
+line con 0
+ logging synchronous
+ exec-timeout 0
+line vty 0 4
+ logging synchronous
+ exec-timeout 0
+!
+interface Ethernet0/0
+ no cdp enable
+!
+interface Ethernet0/1
+ description Link to R1 (LAN segment)
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+!
+interface Ethernet0/2
+ description Link to R2 (LAN segment)
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+!
+interface Ethernet0/3
+ description Link to R3 (LAN segment)
+ switchport mode access
+ switchport access vlan 1
+ no shutdown
+!
+end

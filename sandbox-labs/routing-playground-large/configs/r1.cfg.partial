@@ -1,0 +1,64 @@
+hostname R1
+!
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no ip domain-lookup
+ipv6 unicast-routing
+!
+banner motd ^
+##############################################
+# Routing Playground - Large
+# Node: R1
+##############################################
+^
+!
+line con 0
+ logging synchronous
+ exec-timeout 0
+line vty 0 4
+ logging synchronous
+ exec-timeout 0
+!
+interface Ethernet0/0
+ no cdp enable
+!
+interface Loopback0
+ description Router-ID
+ ip address 1.1.1.1 255.255.255.255
+ ipv6 address 2001:db8:1:0::1/128
+!
+interface Loopback1
+ ip address 10.1.0.1 255.255.255.0
+ ipv6 address 2001:db8:1:1::1/64
+!
+interface Loopback2
+ ip address 10.1.1.1 255.255.255.128
+ ipv6 address 2001:db8:1:2::1/64
+!
+interface Loopback3
+ ip address 10.1.1.129 255.255.255.192
+ ipv6 address 2001:db8:1:3::1/64
+!
+interface Loopback4
+ ip address 10.1.1.225 255.255.255.224
+ ipv6 address 2001:db8:1:4::1/64
+!
+interface Ethernet0/1
+ description Link to R2
+ ip address 10.0.12.1 255.255.255.0
+ ipv6 address 2001:db8:0:12::1/64
+ no shutdown
+!
+interface Ethernet0/2
+ description Link to R9
+ ip address 10.0.19.1 255.255.255.0
+ ipv6 address 2001:db8:0:19::1/64
+ no shutdown
+!
+interface Ethernet0/3
+ description LAN segment via SW1 (R1/R2/R3)
+ ip address 10.1.123.1 255.255.255.0
+ ipv6 address 2001:db8:1:123::1/64
+ no shutdown
+!
+end

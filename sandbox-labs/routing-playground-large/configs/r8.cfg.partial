@@ -1,0 +1,52 @@
+hostname R8
+!
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no ip domain-lookup
+ipv6 unicast-routing
+!
+banner motd ^
+##############################################
+# Routing Playground - Large
+# Node: R8
+##############################################
+^
+!
+line con 0
+ logging synchronous
+ exec-timeout 0
+line vty 0 4
+ logging synchronous
+ exec-timeout 0
+!
+interface Ethernet0/0
+ no cdp enable
+!
+interface Loopback0
+ description Router-ID
+ ip address 8.8.8.8 255.255.255.255
+ ipv6 address 2001:db8:8:0::8/128
+!
+interface Loopback1
+ ip address 10.8.0.1 255.255.255.0
+ ipv6 address 2001:db8:8:1::1/64
+!
+interface Loopback2
+ ip address 10.8.1.1 255.255.255.128
+ ipv6 address 2001:db8:8:2::1/64
+!
+interface Loopback3
+ ip address 10.8.1.129 255.255.255.192
+ ipv6 address 2001:db8:8:3::1/64
+!
+interface Loopback4
+ ip address 10.8.1.225 255.255.255.224
+ ipv6 address 2001:db8:8:4::1/64
+!
+interface Ethernet0/1
+ description Link to R7
+ ip address 10.0.78.8 255.255.255.0
+ ipv6 address 2001:db8:0:78::8/64
+ no shutdown
+!
+end

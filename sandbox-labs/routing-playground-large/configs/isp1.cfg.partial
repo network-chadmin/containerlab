@@ -1,0 +1,36 @@
+hostname ISP1
+!
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no ip domain-lookup
+ipv6 unicast-routing
+!
+banner motd ^
+##############################################
+# Routing Playground - Large
+# Node: ISP1 (Simulated ISP - Volt Communications)
+##############################################
+^
+!
+line con 0
+ logging synchronous
+ exec-timeout 0
+line vty 0 4
+ logging synchronous
+ exec-timeout 0
+!
+interface Ethernet0/0
+ no cdp enable
+!
+interface Loopback0
+ description Router-ID (Volt Communications)
+ ip address 192.0.2.1 255.255.255.255
+ ipv6 address 2001:db8:ffff:ffff::1/128
+!
+interface Ethernet0/1
+ description Uplink to R3
+ ip address 203.0.113.2 255.255.255.252
+ ipv6 address 2001:db8:0:99::2/64
+ no shutdown
+!
+end

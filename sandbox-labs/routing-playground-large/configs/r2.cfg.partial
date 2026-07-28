@@ -1,0 +1,76 @@
+hostname R2
+!
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no ip domain-lookup
+ipv6 unicast-routing
+!
+banner motd ^
+##############################################
+# Routing Playground - Large
+# Node: R2
+##############################################
+^
+!
+line con 0
+ logging synchronous
+ exec-timeout 0
+line vty 0 4
+ logging synchronous
+ exec-timeout 0
+!
+interface Ethernet0/0
+ no cdp enable
+!
+interface Loopback0
+ description Router-ID
+ ip address 2.2.2.2 255.255.255.255
+ ipv6 address 2001:db8:2:0::2/128
+!
+interface Loopback1
+ ip address 10.2.0.1 255.255.255.0
+ ipv6 address 2001:db8:2:1::1/64
+!
+interface Loopback2
+ ip address 10.2.1.1 255.255.255.128
+ ipv6 address 2001:db8:2:2::1/64
+!
+interface Loopback3
+ ip address 10.2.1.129 255.255.255.192
+ ipv6 address 2001:db8:2:3::1/64
+!
+interface Loopback4
+ ip address 10.2.1.225 255.255.255.224
+ ipv6 address 2001:db8:2:4::1/64
+!
+interface Ethernet0/1
+ description Link to R1
+ ip address 10.0.12.2 255.255.255.0
+ ipv6 address 2001:db8:0:12::2/64
+ no shutdown
+!
+interface Ethernet0/2
+ description Link to R6
+ ip address 10.0.26.2 255.255.255.0
+ ipv6 address 2001:db8:0:26::2/64
+ no shutdown
+!
+interface Ethernet0/3
+ description Link to R7
+ ip address 10.0.27.2 255.255.255.0
+ ipv6 address 2001:db8:0:27::2/64
+ no shutdown
+!
+interface Ethernet1/0
+ description Link to R9
+ ip address 10.0.29.2 255.255.255.0
+ ipv6 address 2001:db8:0:29::2/64
+ no shutdown
+!
+interface Ethernet1/1
+ description LAN segment via SW1 (R1/R2/R3)
+ ip address 10.1.123.2 255.255.255.0
+ ipv6 address 2001:db8:1:123::2/64
+ no shutdown
+!
+end

@@ -1,0 +1,47 @@
+name: routing-playground-large
+
+topology:
+  defaults:
+    kind: cisco_iol
+
+  kinds:
+    cisco_iol:
+      image: vrnetlab/cisco_iol:17.15.01
+      startup-config: configs/__clabNodeName__.cfg.partial
+      enforce-startup-config: true
+
+  nodes:
+    r1:
+    r2:
+    r3:
+    r4:
+    r5:
+    r6:
+    r7:
+    r8:
+    r9:
+    sw1:
+      image: vrnetlab/cisco_iol:L2.17.15.01
+    isp1:
+
+  links:
+    # Core mesh
+    - endpoints: ["r1:Ethernet0/1", "r2:Ethernet0/1"]
+    - endpoints: ["r1:Ethernet0/2", "r9:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet0/2", "r6:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet0/3", "r7:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet1/0", "r9:Ethernet0/2"]
+    - endpoints: ["r3:Ethernet0/1", "r4:Ethernet0/1"]
+    - endpoints: ["r3:Ethernet0/2", "r5:Ethernet0/1"]
+    - endpoints: ["r3:Ethernet0/3", "r6:Ethernet0/2"]
+    - endpoints: ["r4:Ethernet0/2", "r5:Ethernet0/2"]
+    - endpoints: ["r6:Ethernet0/3", "r7:Ethernet0/2"]
+    - endpoints: ["r7:Ethernet0/3", "r8:Ethernet0/1"]
+
+    # Shared LAN segment (R1/R2/R3 via SW1)
+    - endpoints: ["r1:Ethernet0/3", "sw1:Ethernet0/1"]
+    - endpoints: ["r2:Ethernet1/1", "sw1:Ethernet0/2"]
+    - endpoints: ["r3:Ethernet1/0", "sw1:Ethernet0/3"]
+
+    # Simulated ISP uplink
+    - endpoints: ["r3:Ethernet1/1", "isp1:Ethernet0/1"]
