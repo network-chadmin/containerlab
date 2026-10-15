@@ -1,0 +1,26 @@
+configure
+interface ethernet0/0
+no cdp enable
+username admin privilege 15 secret admin
+!
+interface ethernet0/1
+ ip address 100.10.1.1 255.255.255.248
+ description sea-mdf-r1 Eth2
+ no shutdown
+!
+interface ethernet0/2
+ ip address 100.10.1.9 255.255.255.248
+ description sea-mdf-r2 Eth2
+!
+interface ethernet0/3
+ ip address 123.123.123.1 255.255.255.0
+ desc Seamart Server
+ no shutdown
+!
+interface loopback0
+ ip address 8.8.8.8 255.255.255.255
+ description google
+!
+ip dns server
+!
+ip host seamart.com 123.123.123.123

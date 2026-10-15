@@ -5,6 +5,14 @@ mgmt:
   ipv4-subnet: 172.20.25.0/24
 
 topology:
+  kinds:
+    arista_ceos:
+      startup-config: configs/__clabNodeName__.cfg
+      enforce-startup-config: true
+    cisco_iol:
+      startup-config: configs/__clabNodeName__.cfg.partial
+      enforce-startup-config: true
+
   nodes:
 
     # Access Switches
@@ -12,205 +20,59 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.74
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.74/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.75
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.75/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     mke-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.81
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.81/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     msp-a1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.84
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.84/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     # Distribution Switches
     sea-mdf-dsw1:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.76
      image: ceos:4.34.4M
-     startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.76/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     sea-mdf-dsw2:
      kind: arista_ceos
      mgmt-ipv4: 172.20.25.77
      image: ceos:4.34.4M
-     startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         ip address 172.20.25.77/24
-         vrf Management
-         no lldp transmit
-         no lldp receive
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.78
       image: vrnetlab/cisco_iol:17.15.01
-      startup-config: |
-        configure
-        interface ethernet0/0
-         no lldp transmit
-         no lldp receive
-         no cdp enable
-        username admin privilege 15 secret admin
 
     sea-mdf-r2:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.79
       image: vrnetlab/cisco_iol:17.15.01
-      startup-config: |
-        configure
-        interface ethernet0/0
-         no lldp transmit
-         no lldp receive
-         no cdp enable
-        username admin privilege 15 secret admin
 
     mke-a1-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.82
       image: vrnetlab/cisco_iol:17.15.01
-      startup-config: |
-        configure
-        interface ethernet0/0
-         no lldp transmit
-         no lldp receive
-         no cdp enable
-        username admin privilege 15 secret admin
 
     msp-a1-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.83
       image: vrnetlab/cisco_iol:17.15.01
-      startup-config: |
-        configure
-        interface ethernet0/0
-         no lldp transmit
-         no lldp receive
-         no cdp enable
-        username admin privilege 15 secret admin
 
     volt-r1:
       kind: cisco_iol
       mgmt-ipv4: 172.20.25.86
       image: vrnetlab/cisco_iol:17.15.01
-      startup-config: |
-        configure
-        interface ethernet0/0
-        no cdp enable
-        username admin privilege 15 secret admin
-        !
-        interface ethernet0/1
-         ip address 100.10.1.1 255.255.255.248
-         description sea-mdf-r1 Eth2
-         no shutdown
-        !
-        interface ethernet0/2
-         ip address 100.10.1.9 255.255.255.248
-         description sea-mdf-r2 Eth2
-        !
-        interface ethernet0/3
-         ip address 20.42.155.25 255.255.255.252
-         desc mke-a1-r1 Eth0/2
-         no shutdown
-        !
-        interface ethernet1/0
-         ip address 93.100.51.1 255.255.255.252
-         desc msp-a1-r1 Eth0/2
-         no shutdown
-        !
-        interface ethernet1/1
-         ip address 123.123.123.1 255.255.255.0
-         desc Seamart Server
-         no shutdown
-        ! 
-        interface loopback0
-         ip address 8.8.8.8 255.255.255.255
-         description google
-        !
-        ip dns server
-        !
-        ip route 0.0.0.0 0.0.0.0 null0
-        !
-        ip host seamart.com 123.123.123.123
-        !
-        router bgp 200
-          bgp log-neighbor-changes
-          soft-reconfiguration inbound
-          neighbor 100.10.1.2 remote-as 1001
-          neighbor 100.10.1.10 remote-as 1001
-          network 0.0.0.0 mask 0.0.0.0
-        
+
     # Hosts
     seamart-server:
       kind: linux

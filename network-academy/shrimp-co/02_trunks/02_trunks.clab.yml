@@ -5,6 +5,11 @@ mgmt:
   ipv4-subnet: 172.20.25.0/24
 
 topology:
+  kinds:
+    arista_ceos:
+      startup-config: configs/__clabNodeName__.cfg
+      enforce-startup-config: true
+
   nodes:
 
     # Switches
@@ -12,36 +17,12 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.6
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         vrf Management
-         ip address 172.20.25.6/24
-         no lldp transmit
-         no lldp receive
 
     sea-b1-asw1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.25.7
       image: ceos:4.34.4M
-      startup-config: |
-        configure
-        no ip route 0.0.0.0/0 172.20.25.1
-        vrf instance Management
-        username admin privilege 15 secret admin
-        no lldp run
-        !
-        interface Management0
-         vrf Management
-         ip address 172.20.25.7/24
-         no lldp transmit
-         no lldp receive
-        
+
     # Hosts
     bob:
       kind: linux

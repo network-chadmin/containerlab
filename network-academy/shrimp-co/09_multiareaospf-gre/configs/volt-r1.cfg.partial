@@ -1,0 +1,45 @@
+configure
+interface ethernet0/0
+no cdp enable
+username admin privilege 15 secret admin
+!
+interface ethernet0/1
+ ip address 100.10.1.1 255.255.255.248
+ description sea-mdf-r1 Eth2
+ no shutdown
+!
+interface ethernet0/2
+ ip address 100.10.1.9 255.255.255.248
+ description sea-mdf-r2 Eth2
+!
+interface ethernet0/3
+ ip address 20.42.155.25 255.255.255.252
+ desc mke-a1-r1 Eth0/2
+ no shutdown
+!
+interface ethernet1/0
+ ip address 93.100.51.1 255.255.255.252
+ desc msp-a1-r1 Eth0/2
+ no shutdown
+!
+interface ethernet1/1
+ ip address 123.123.123.1 255.255.255.0
+ desc Seamart Server
+ no shutdown
+! 
+interface loopback0
+ ip address 8.8.8.8 255.255.255.255
+ description google
+!
+ip dns server
+!
+ip route 0.0.0.0 0.0.0.0 null0
+!
+ip host seamart.com 123.123.123.123
+!
+router bgp 200
+  bgp log-neighbor-changes
+  soft-reconfiguration inbound
+  neighbor 100.10.1.2 remote-as 1001
+  neighbor 100.10.1.10 remote-as 1001
+  network 0.0.0.0 mask 0.0.0.0
