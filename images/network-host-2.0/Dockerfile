@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 #   addressing and DNS:      iproute2 iputils-ping traceroute mtr-tiny dnsutils net-tools isc-dhcp-client
 #   capture and scanning:    tcpdump tshark nmap
 #   traffic testing:         iperf3 socat netcat-openbsd curl telnet
-#   multicast:               smcroute omping
+#   multicast:               smcroute
 #   utilities:               jq ethtool
 RUN apt-get update && apt-get install -y --no-install-recommends \
         bash nano vim-tiny sudo ifupdown \
@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         iproute2 iputils-ping traceroute mtr-tiny dnsutils net-tools isc-dhcp-client \
         tcpdump tshark nmap \
         iperf3 socat netcat-openbsd curl telnet \
-        smcroute omping \
+        smcroute \
         jq ethtool \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
