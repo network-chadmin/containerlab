@@ -51,7 +51,7 @@ topology:
     seamart-server:
       kind: linux
       mgmt-ipv4: 172.20.25.43
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/seamart-web:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -63,7 +63,7 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.20.25.44
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -72,7 +72,7 @@ topology:
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.45
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -81,7 +81,7 @@ topology:
     steve:
       kind: linux
       mgmt-ipv4: 172.20.25.46
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -90,7 +90,7 @@ topology:
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.47
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A

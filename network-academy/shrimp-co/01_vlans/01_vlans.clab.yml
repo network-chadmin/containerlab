@@ -21,7 +21,7 @@ topology:
     bob:
       kind: linux
       mgmt-ipv4: 172.20.25.3
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -30,7 +30,7 @@ topology:
     linda:
       kind: linux
       mgmt-ipv4: 172.20.25.4
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
@@ -39,7 +39,7 @@ topology:
     alice:
       kind: linux
       mgmt-ipv4: 172.20.25.5
-      image: networkchadmin/network-host:latest
+      image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
         - ssh-keygen -A
