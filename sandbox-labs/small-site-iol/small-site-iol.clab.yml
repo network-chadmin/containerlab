@@ -1,0 +1,81 @@
+name: small-site-iol
+
+mgmt:
+  network: small-site-iol-mgmt
+  ipv4-subnet: 172.20.32.0/24
+  ipv4-gw: 172.20.32.254
+
+topology:
+  nodes:
+    # Hosts
+    H1:
+      kind: linux
+      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.32.1
+    H2:
+      kind: linux
+      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.32.2
+
+    # Layer 2 access
+    SW1:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.32.3
+      startup-config: configs/SW1.cfg
+      enforce-startup-config: true
+    SW2:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.32.4
+      startup-config: configs/SW2.cfg
+      enforce-startup-config: true
+
+    # Layer 3 distribution
+    D1:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.32.5
+      startup-config: configs/D1.cfg
+      enforce-startup-config: true
+    D2:
+      kind: arista_ceos
+      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.32.6
+      startup-config: configs/D2.cfg
+      enforce-startup-config: true
+
+    # Edge routers
+    R1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.15.01
+      mgmt-ipv4: 172.20.32.7
+      startup-config: configs/R1.cfg.partial
+      enforce-startup-config: true
+    R2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.15.01
+      mgmt-ipv4: 172.20.32.8
+      startup-config: configs/R2.cfg.partial
+      enforce-startup-config: true
+
+    # Simulated ISP (cabled, left unconfigured)
+    ISP1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.15.01
+      mgmt-ipv4: 172.20.32.9
+
+  links:
+    - endpoints: ["H1:eth1", "SW1:eth1"]
+    - endpoints: ["H2:eth1", "SW2:eth1"]
+    - endpoints: ["SW1:eth2", "D1:eth1"]
+    - endpoints: ["SW1:eth3", "D2:eth1"]
+    - endpoints: ["SW2:eth2", "D1:eth2"]
+    - endpoints: ["SW2:eth3", "D2:eth2"]
+    - endpoints: ["D1:eth3", "D2:eth3"]
+    - endpoints: ["D1:eth4", "R1:Ethernet0/1"]
+    - endpoints: ["D1:eth5", "R2:Ethernet0/1"]
+    - endpoints: ["D2:eth4", "R1:Ethernet0/2"]
+    - endpoints: ["D2:eth5", "R2:Ethernet0/2"]
+    - endpoints: ["R1:Ethernet0/3", "ISP1:Ethernet0/1"]
+    - endpoints: ["R2:Ethernet0/3", "ISP1:Ethernet0/2"]
