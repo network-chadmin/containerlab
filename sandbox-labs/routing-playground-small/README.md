@@ -57,6 +57,23 @@ ssh admin@clab-routing-playground-small-r1
 Default credentials: `admin` / `admin` (all nodes). Container names follow
 `clab-routing-playground-small-<node>`.
 
+Management IPs are static (host octet = router number), so SSH sessions —
+SecureCRT or otherwise — stay valid across redeploys instead of relying on
+containerlab's auto-assigned addressing:
+
+| Node | Mgmt IPv4 |
+|---|---|
+| R1 | 172.20.30.1 |
+| R2 | 172.20.30.2 |
+| R3 | 172.20.30.3 |
+| R4 | 172.20.30.4 |
+| R5 | 172.20.30.5 |
+
+All on a dedicated `172.20.30.0/24` bridge (gateway pinned to `.254` to
+keep it out of the way), separate from every other lab's mgmt network so
+this one can be deployed alongside them without an IP or bridge-name
+collision.
+
 ## Addressing
 
 ### Loopbacks (IPv4)

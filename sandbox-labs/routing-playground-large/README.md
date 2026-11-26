@@ -9,27 +9,6 @@ Small, nothing above Layer 3 addressing is configured yet — every router
 boots with its loopbacks and links addressed (IPv4 + IPv6) and nothing
 more. OSPF and BGP variants build on top of this same addressing plan.
 
-## Topology
-
-```
-         R9
-        /  \
-      R1----R2------R7------R8
-       \   / \      /
-        \ /   \    /
-        SW1    \  /
-        / \     R6
-       /   \    /
-      R3----+--+
-     / |  \
-   R4  |   ISP1 (Volt Communications)
-    \  |
-     R5
-```
-
-Schematic only — a 15-link mesh doesn't draw cleanly in ASCII. The link
-list and addressing tables below are the definitive source of truth.
-
 **Full link list:** R1–R9, R1–R2, R1–SW1, R2–R6, R2–R7, R2–R9, R2–SW1,
 R3–R4, R3–R5, R3–R6, R3–SW1, R3–ISP1, R4–R5, R6–R7, R7–R8
 
@@ -72,6 +51,29 @@ ssh admin@clab-routing-playground-large-r1
 
 Default credentials: `admin` / `admin` (all nodes). Container names follow
 `clab-routing-playground-large-<node>`.
+
+Management IPs are static (host octet = router number), so SSH sessions —
+SecureCRT or otherwise — stay valid across redeploys instead of relying on
+containerlab's auto-assigned addressing:
+
+| Node | Mgmt IPv4 |
+|---|---|
+| R1 | 172.20.31.1 |
+| R2 | 172.20.31.2 |
+| R3 | 172.20.31.3 |
+| R4 | 172.20.31.4 |
+| R5 | 172.20.31.5 |
+| R6 | 172.20.31.6 |
+| R7 | 172.20.31.7 |
+| R8 | 172.20.31.8 |
+| R9 | 172.20.31.9 |
+| SW1 | 172.20.31.10 |
+| ISP1 | 172.20.31.11 |
+
+All on a dedicated `172.20.31.0/24` bridge (gateway pinned to `.254` to
+keep it out of the way), separate from Small's mgmt network and every
+other lab's, so this one can be deployed alongside them without an IP or
+bridge-name collision.
 
 ## Addressing
 

@@ -1,5 +1,10 @@
 name: routing-playground-small
 
+mgmt:
+  network: routing-playground-small-mgmt
+  ipv4-subnet: 172.20.30.0/24
+  ipv4-gw: 172.20.30.254
+
 topology:
   defaults:
     kind: cisco_iol
@@ -12,10 +17,15 @@ topology:
 
   nodes:
     r1:
+      mgmt-ipv4: 172.20.30.1
     r2:
+      mgmt-ipv4: 172.20.30.2
     r3:
+      mgmt-ipv4: 172.20.30.3
     r4:
+      mgmt-ipv4: 172.20.30.4
     r5:
+      mgmt-ipv4: 172.20.30.5
 
   links:
     - endpoints: ["r1:Ethernet0/1", "r2:Ethernet0/1"]

@@ -1,5 +1,10 @@
 name: routing-playground-large
 
+mgmt:
+  network: routing-playground-large-mgmt
+  ipv4-subnet: 172.20.31.0/24
+  ipv4-gw: 172.20.31.254
+
 topology:
   defaults:
     kind: cisco_iol
@@ -12,17 +17,28 @@ topology:
 
   nodes:
     r1:
+      mgmt-ipv4: 172.20.31.1
     r2:
+      mgmt-ipv4: 172.20.31.2
     r3:
+      mgmt-ipv4: 172.20.31.3
     r4:
+      mgmt-ipv4: 172.20.31.4
     r5:
+      mgmt-ipv4: 172.20.31.5
     r6:
+      mgmt-ipv4: 172.20.31.6
     r7:
+      mgmt-ipv4: 172.20.31.7
     r8:
+      mgmt-ipv4: 172.20.31.8
     r9:
+      mgmt-ipv4: 172.20.31.9
     sw1:
       image: vrnetlab/cisco_iol:L2.17.15.01
+      mgmt-ipv4: 172.20.31.10
     isp1:
+      mgmt-ipv4: 172.20.31.11
 
   links:
     # Core mesh
