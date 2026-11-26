@@ -1,74 +1,71 @@
 name: 3_router-on-a-stick
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  network: 3_router-on-a-stick-mgmt
+  ipv4-subnet: 172.20.33.0/24
 
 topology:
   kinds:
     arista_ceos:
+      image: ceos:4.34.4M
       startup-config: configs/__clabNodeName__.cfg
       enforce-startup-config: true
     cisco_iol:
+      image: vrnetlab/cisco_iol:17.15.01
       startup-config: configs/__clabNodeName__.cfg.partial
       enforce-startup-config: true
+    linux:
+      image: networkchadmin/network-host:2.0
 
   nodes:
 
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.12
-      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.33.12
 
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.13
-      image: ceos:4.34.4M
+      mgmt-ipv4: 172.20.33.13
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.14
-      image: vrnetlab/cisco_iol:17.15.01
+      mgmt-ipv4: 172.20.33.14
 
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.15
-      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.33.15
       exec:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
-      
+
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.16
-      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.33.16
       exec:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
-      
+
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.17
-      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.33.17
       exec:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
-      
+
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.18
-      image: networkchadmin/network-host:2.0
+      mgmt-ipv4: 172.20.33.18
       exec:
         - ip route del default
         - ssh-keygen -A
         - service ssh start
-      
+
   links:
     # Host to Switch Links
     - endpoints: ["bob:eth1", "sea-a1-asw1:eth1"]
