@@ -1,8 +1,8 @@
 name: 7_pat-dynamic-routing
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  network: 7_pat-dynamic-routing-mgmt-shrimpco
+  ipv4-subnet: 172.20.39.0/24
 
 topology:
   kinds:
@@ -18,45 +18,45 @@ topology:
     # Access Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.48
+      mgmt-ipv4: 172.20.39.48
       image: ceos:4.34.4M
 
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.49
+      mgmt-ipv4: 172.20.39.49
       image: ceos:4.34.4M
 
     # Distribution Switches
     sea-mdf-dsw1:
      kind: arista_ceos
-     mgmt-ipv4: 172.20.25.50
+     mgmt-ipv4: 172.20.39.50
      image: ceos:4.34.4M
 
     sea-mdf-dsw2:
      kind: arista_ceos
-     mgmt-ipv4: 172.20.25.51
+     mgmt-ipv4: 172.20.39.51
      image: ceos:4.34.4M
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.52
+      mgmt-ipv4: 172.20.39.52
       image: vrnetlab/cisco_iol:17.15.01
 
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.53
+      mgmt-ipv4: 172.20.39.53
       image: vrnetlab/cisco_iol:17.15.01
 
     volt-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.54
+      mgmt-ipv4: 172.20.39.54
       image: vrnetlab/cisco_iol:17.15.01
 
     # Hosts
     seamart-server:
       kind: linux
-      mgmt-ipv4: 172.20.25.55
+      mgmt-ipv4: 172.20.39.55
       image: networkchadmin/seamart-web:2.0
       exec:
         - ip route del default
@@ -68,7 +68,7 @@ topology:
 
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.56
+      mgmt-ipv4: 172.20.39.56
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -77,7 +77,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.57
+      mgmt-ipv4: 172.20.39.57
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -86,7 +86,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.58
+      mgmt-ipv4: 172.20.39.58
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -95,7 +95,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.59
+      mgmt-ipv4: 172.20.39.59
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default

@@ -2,8 +2,8 @@ name: small-site-iol
 
 mgmt:
   network: small-site-iol-mgmt
-  ipv4-subnet: 172.20.32.0/24
-  ipv4-gw: 172.20.32.254
+  ipv4-subnet: 172.20.42.0/24
+  ipv4-gw: 172.20.42.254
 
 topology:
   nodes:
@@ -11,23 +11,23 @@ topology:
     H1:
       kind: linux
       image: networkchadmin/network-host:2.0
-      mgmt-ipv4: 172.20.32.1
+      mgmt-ipv4: 172.20.42.1
     H2:
       kind: linux
       image: networkchadmin/network-host:2.0
-      mgmt-ipv4: 172.20.32.2
+      mgmt-ipv4: 172.20.42.2
 
     # Layer 2 access
     SW1:
       kind: arista_ceos
       image: ceos:4.34.4M
-      mgmt-ipv4: 172.20.32.3
+      mgmt-ipv4: 172.20.42.3
       startup-config: configs/SW1.cfg
       enforce-startup-config: true
     SW2:
       kind: arista_ceos
       image: ceos:4.34.4M
-      mgmt-ipv4: 172.20.32.4
+      mgmt-ipv4: 172.20.42.4
       startup-config: configs/SW2.cfg
       enforce-startup-config: true
 
@@ -35,13 +35,13 @@ topology:
     D1:
       kind: arista_ceos
       image: ceos:4.34.4M
-      mgmt-ipv4: 172.20.32.5
+      mgmt-ipv4: 172.20.42.5
       startup-config: configs/D1.cfg
       enforce-startup-config: true
     D2:
       kind: arista_ceos
       image: ceos:4.34.4M
-      mgmt-ipv4: 172.20.32.6
+      mgmt-ipv4: 172.20.42.6
       startup-config: configs/D2.cfg
       enforce-startup-config: true
 
@@ -49,13 +49,13 @@ topology:
     R1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:17.15.01
-      mgmt-ipv4: 172.20.32.7
+      mgmt-ipv4: 172.20.42.7
       startup-config: configs/R1.cfg.partial
       enforce-startup-config: true
     R2:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:17.15.01
-      mgmt-ipv4: 172.20.32.8
+      mgmt-ipv4: 172.20.42.8
       startup-config: configs/R2.cfg.partial
       enforce-startup-config: true
 
@@ -63,7 +63,7 @@ topology:
     ISP1:
       kind: cisco_iol
       image: vrnetlab/cisco_iol:17.15.01
-      mgmt-ipv4: 172.20.32.9
+      mgmt-ipv4: 172.20.42.9
 
   links:
     - endpoints: ["H1:eth1", "SW1:eth1"]

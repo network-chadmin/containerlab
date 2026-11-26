@@ -1,8 +1,8 @@
 name: 4_basic-redundancy
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  network: 4_basic-redundancy-mgmt-shrimpco
+  ipv4-subnet: 172.20.36.0/24
 
 topology:
   kinds:
@@ -17,29 +17,29 @@ topology:
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.19
+      mgmt-ipv4: 172.20.36.19
       image: ceos:4.34.4M
 
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.20
+      mgmt-ipv4: 172.20.36.20
       image: ceos:4.34.4M
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.21
+      mgmt-ipv4: 172.20.36.21
       image: vrnetlab/cisco_iol:17.15.01
 
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.22
+      mgmt-ipv4: 172.20.36.22
       image: vrnetlab/cisco_iol:17.15.01
 
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.23
+      mgmt-ipv4: 172.20.36.23
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -48,7 +48,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.24
+      mgmt-ipv4: 172.20.36.24
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -57,7 +57,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.25
+      mgmt-ipv4: 172.20.36.25
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -66,7 +66,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.26
+      mgmt-ipv4: 172.20.36.26
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default

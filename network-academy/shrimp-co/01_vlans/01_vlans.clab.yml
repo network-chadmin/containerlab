@@ -1,8 +1,8 @@
 name: 01_vlans
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24 
+  network: 01_vlans-mgmt-shrimpco
+  ipv4-subnet: 172.20.34.0/24 
 
 topology:
   kinds:
@@ -14,13 +14,13 @@ topology:
     # Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.2
+      mgmt-ipv4: 172.20.34.2
       image: ceos:4.34.4M
 
     # Hosts
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.3
+      mgmt-ipv4: 172.20.34.3
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -29,7 +29,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.4
+      mgmt-ipv4: 172.20.34.4
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -38,7 +38,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.5
+      mgmt-ipv4: 172.20.34.5
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default

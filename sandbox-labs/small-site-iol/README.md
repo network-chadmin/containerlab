@@ -37,7 +37,7 @@ containerlab deploy -t small-site-iol.clab.yml --reconfigure
 
 ## Access
 
-- **Routers and ISP:** `ssh admin@172.20.32.7` for R1, and so on. Login is `admin` / `admin`.
+- **Routers and ISP:** `ssh admin@172.20.42.7` for R1, and so on. Login is `admin` / `admin`.
 - **Arista switches:** `docker exec -it clab-small-site-iol-D1 Cli`. Login is `admin` / `admin`.
 - **Hosts:** `docker exec -it clab-small-site-iol-H1 bash`, or SSH as `labuser` / `admin`.
 
@@ -45,15 +45,15 @@ Management addresses are static, so SSH sessions stay valid across redeploys.
 
 | Node | Type | Mgmt IPv4 |
 |---|---|---|
-| H1 | Linux host | 172.20.32.1 |
-| H2 | Linux host | 172.20.32.2 |
-| SW1 | cEOS, Layer 2 | 172.20.32.3 |
-| SW2 | cEOS, Layer 2 | 172.20.32.4 |
-| D1 | cEOS, Layer 3 | 172.20.32.5 |
-| D2 | cEOS, Layer 3 | 172.20.32.6 |
-| R1 | IOL, edge | 172.20.32.7 |
-| R2 | IOL, edge | 172.20.32.8 |
-| ISP1 | IOL, unconfigured | 172.20.32.9 |
+| H1 | Linux host | 172.20.42.1 |
+| H2 | Linux host | 172.20.42.2 |
+| SW1 | cEOS, Layer 2 | 172.20.42.3 |
+| SW2 | cEOS, Layer 2 | 172.20.42.4 |
+| D1 | cEOS, Layer 3 | 172.20.42.5 |
+| D2 | cEOS, Layer 3 | 172.20.42.6 |
+| R1 | IOL, edge | 172.20.42.7 |
+| R2 | IOL, edge | 172.20.42.8 |
+| ISP1 | IOL, unconfigured | 172.20.42.9 |
 
 ## Addressing
 

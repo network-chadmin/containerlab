@@ -1,8 +1,8 @@
 name: 6_static-routing
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  network: 6_static-routing-mgmt-shrimpco
+  ipv4-subnet: 172.20.38.0/24
 
 topology:
   kinds:
@@ -17,40 +17,40 @@ topology:
     # Access Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.37
+      mgmt-ipv4: 172.20.38.37
       image: ceos:4.34.4M
 
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.38
+      mgmt-ipv4: 172.20.38.38
       image: ceos:4.34.4M
 
     # Distribution Switches
     sea-mdf-dsw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.39
+      mgmt-ipv4: 172.20.38.39
       image: ceos:4.34.4M
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.40
+      mgmt-ipv4: 172.20.38.40
       image: vrnetlab/cisco_iol:17.15.01
 
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.41
+      mgmt-ipv4: 172.20.38.41
       image: vrnetlab/cisco_iol:17.15.01
 
     volt-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.42
+      mgmt-ipv4: 172.20.38.42
       image: vrnetlab/cisco_iol:17.15.01
 
     # Hosts
     seamart-server:
       kind: linux
-      mgmt-ipv4: 172.20.25.43
+      mgmt-ipv4: 172.20.38.43
       image: networkchadmin/seamart-web:2.0
       exec:
         - ip route del default
@@ -62,7 +62,7 @@ topology:
 
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.44
+      mgmt-ipv4: 172.20.38.44
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -71,7 +71,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.45
+      mgmt-ipv4: 172.20.38.45
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -80,7 +80,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.46
+      mgmt-ipv4: 172.20.38.46
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -89,7 +89,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.47
+      mgmt-ipv4: 172.20.38.47
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default

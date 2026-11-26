@@ -1,8 +1,8 @@
 name: 9_multiareaospf-gre-bgp
 
 mgmt:
-  network: custom_mgmt
-  ipv4-subnet: 172.20.25.0/24
+  network: 9_multiareaospf-gre-bgp-mgmt-shrimpco
+  ipv4-subnet: 172.20.41.0/24
 
 topology:
   kinds:
@@ -18,65 +18,65 @@ topology:
     # Access Switches
     sea-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.74
+      mgmt-ipv4: 172.20.41.74
       image: ceos:4.34.4M
 
     sea-b1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.75
+      mgmt-ipv4: 172.20.41.75
       image: ceos:4.34.4M
 
     mke-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.81
+      mgmt-ipv4: 172.20.41.81
       image: ceos:4.34.4M
 
     msp-a1-asw1:
       kind: arista_ceos
-      mgmt-ipv4: 172.20.25.84
+      mgmt-ipv4: 172.20.41.84
       image: ceos:4.34.4M
 
     # Distribution Switches
     sea-mdf-dsw1:
      kind: arista_ceos
-     mgmt-ipv4: 172.20.25.76
+     mgmt-ipv4: 172.20.41.76
      image: ceos:4.34.4M
 
     sea-mdf-dsw2:
      kind: arista_ceos
-     mgmt-ipv4: 172.20.25.77
+     mgmt-ipv4: 172.20.41.77
      image: ceos:4.34.4M
 
     # Routers
     sea-mdf-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.78
+      mgmt-ipv4: 172.20.41.78
       image: vrnetlab/cisco_iol:17.15.01
 
     sea-mdf-r2:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.79
+      mgmt-ipv4: 172.20.41.79
       image: vrnetlab/cisco_iol:17.15.01
 
     mke-a1-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.82
+      mgmt-ipv4: 172.20.41.82
       image: vrnetlab/cisco_iol:17.15.01
 
     msp-a1-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.83
+      mgmt-ipv4: 172.20.41.83
       image: vrnetlab/cisco_iol:17.15.01
 
     volt-r1:
       kind: cisco_iol
-      mgmt-ipv4: 172.20.25.86
+      mgmt-ipv4: 172.20.41.86
       image: vrnetlab/cisco_iol:17.15.01
 
     # Hosts
     seamart-server:
       kind: linux
-      mgmt-ipv4: 172.20.25.87
+      mgmt-ipv4: 172.20.41.87
       image: networkchadmin/seamart-web:2.0
       exec:
         - ip route del default
@@ -88,7 +88,7 @@ topology:
 
     jim:
       kind: linux
-      mgmt-ipv4: 172.20.25.80
+      mgmt-ipv4: 172.20.41.80
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -97,7 +97,7 @@ topology:
 
     sharon:
       kind: linux
-      mgmt-ipv4: 172.20.25.85
+      mgmt-ipv4: 172.20.41.85
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -106,7 +106,7 @@ topology:
 
     bob:
       kind: linux
-      mgmt-ipv4: 172.20.25.88
+      mgmt-ipv4: 172.20.41.88
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -115,7 +115,7 @@ topology:
 
     gerald:
       kind: linux
-      mgmt-ipv4: 172.20.25.89
+      mgmt-ipv4: 172.20.41.89
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -124,7 +124,7 @@ topology:
 
     alice:
       kind: linux
-      mgmt-ipv4: 172.20.25.90
+      mgmt-ipv4: 172.20.41.90
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -133,7 +133,7 @@ topology:
 
     steve:
       kind: linux
-      mgmt-ipv4: 172.20.25.91
+      mgmt-ipv4: 172.20.41.91
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -142,7 +142,7 @@ topology:
 
     sandra:
       kind: linux
-      mgmt-ipv4: 172.20.25.92
+      mgmt-ipv4: 172.20.41.92
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
@@ -151,7 +151,7 @@ topology:
 
     linda:
       kind: linux
-      mgmt-ipv4: 172.20.25.93
+      mgmt-ipv4: 172.20.41.93
       image: networkchadmin/network-host:2.0
       exec:
         - ip route del default
